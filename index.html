@@ -37,26 +37,6 @@
       padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
-    .action-badge {
-      background-color: #e53e3e; color: white; padding: 4px 8px;
-      border-radius: 4px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 10px;
-    }
-    .slot-list { display: flex; flex-direction: column; gap: 12px; }
-    .slot-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      background-color: var(--accent);
-      color: white;
-      text-decoration: none;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-      margin-top: 10px;
-    }
     .price-list { display: flex; flex-direction: column; gap: 20px; }
     .price-item { border-left: 4px solid var(--primary); padding-left: 12px; }
     .price-item h3 { margin: 0 0 5px 0; color: var(--primary); }
@@ -65,7 +45,17 @@
       width: 180px; height: 180px; object-fit: cover;
       border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .loading, .no-slots { text-align: center; padding: 15px; color: #718096; }
+    .slot-btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
     footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #718096; }
     .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
     button.legal-btn {
@@ -92,14 +82,29 @@
 
   <div class="container">
     
-    <!-- TERMIN BUCHUNG: FOKUS SPORTMASSAGE -->
-    <section id="termine">
-      <h2>Freie Termine buchen</h2>
-      <span class="action-badge">! Aktion nur bis Ende Oktober 2026: 55 € statt 59 € !</span>
-      <p>Klicke auf deinen Wunschtermin, um die Anfrage direkt per WhatsApp zu senden:</p>
-      
-      <div id="slots" class="slot-list">
-        <div class="loading">Termine werden geladen...</div>
+    <!-- TERMIN BUCHUNG: SPORTMASSAGE KASTEN -->
+    <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
+      <div style="background-color: #ededec; padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0;">Sportmassage</h2>
+        <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
+        
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px;">
+          Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden
+        </p>
+        
+        <div style="font-size: 1.25rem; font-style: italic; font-weight: bold; margin-bottom: 8px; color: #000;">
+          ! Aktion nur bis Ende Oktober 2026 !
+        </div>
+        
+        <div style="font-size: 1.3rem; margin-bottom: 25px;">
+          <span style="color: #1bb753; font-weight: bold;">60 Minuten für 55 €</span> 
+          <span style="text-decoration: line-through; font-weight: bold; color: #000;">statt 59 €</span>
+        </div>
+
+        <!-- Dynamische Termine aus Google Sheets -->
+        <div id="slots" style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+          <div style="color: #666; font-size: 0.9rem;">Termine werden geladen...</div>
+        </div>
       </div>
     </section>
 
@@ -113,7 +118,7 @@
           <h3>Rücken- und Nackenmassage</h3>
           <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
-          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
+          <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
             💬 Rücken- & Nackenmassage via WhatsApp
           </a>
         </div>
@@ -122,7 +127,7 @@
           <h3>Wellnessmassage</h3>
           <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>60 Minuten:</strong> 55 €</p>
-          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20anfragen." target="_blank">
+          <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20anfragen." target="_blank">
             💬 Wellnessmassage (60 Min.) via WhatsApp
           </a>
         </div>
@@ -130,7 +135,7 @@
         <div class="price-item">
           <h3>Individuelle Anfragen</h3>
           <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach per WhatsApp.</p>
-          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
+          <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
             💬 Individuelle Anfrage via WhatsApp
           </a>
         </div>
@@ -155,7 +160,7 @@
     <section id="gutscheine">
       <h2>Gutscheine</h2>
       <p>Schenke einem wertvollen Menschen eine Auszeit und Entspannung! Gutscheine können individuell ausgestellt werden:</p>
-      <a class="voucher-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+      <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
         🎁 Gutschein per WhatsApp anfragen
       </a>
     </section>
@@ -229,31 +234,40 @@
               let wochentag = '';
               if (parts.length === 3) {
                 const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
-                wochentag = days[dateObj.getDay()] + ' ';
+                wochentag = days[dateObj.getDay()] + ', ';
               }
 
               const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage anfragen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr.`;
               const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
               const btn = document.createElement('a');
-              btn.className = 'slot-btn';
               btn.href = waUrl;
               btn.target = '_blank';
-              btn.innerHTML = `
-                <div>📅 ${wochentag}${datumStr}</div>
-                <div>💆‍♂️ 60 Min. Sportmassage (55 €)</div>
-                <div>⏰ ${start} - ${ende} Uhr</div>
+              btn.style.cssText = `
+                background-color: #2e4d46;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 0.95rem;
+                width: 100%;
+                max-width: 320px;
+                box-sizing: border-box;
+                display: block;
+                text-align: center;
               `;
+              btn.innerHTML = `${wochentag}${datumStr} | ${start} - ${ende} Uhr`;
               slotsContainer.appendChild(btn);
             }
           }
         });
 
         if (count === 0) {
-          slotsContainer.innerHTML = '<div class="no-slots">Derzeit sind keine freien Termine verfügbar. Bitte melde dich direkt per WhatsApp.</div>';
+          slotsContainer.innerHTML = '<div style="color: #666; font-size: 0.9rem;">Derzeit keine freien Termine verfügbar.</div>';
         }
       } catch (err) {
-        document.getElementById('slots').innerHTML = '<div class="no-slots">Fehler beim Laden der Termine.</div>';
+        document.getElementById('slots').innerHTML = '<div style="color: #c53030; font-size: 0.9rem;">Fehler beim Laden der Termine.</div>';
       }
     }
 
