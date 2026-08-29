@@ -71,6 +71,7 @@
       font-weight: bold;
       font-size: 0.95rem;
       margin-top: 10px;
+      text-align: center;
     }
     footer { text-align: center; padding: 25px; font-size: 0.85rem; color: var(--subtext); }
     .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
@@ -85,11 +86,22 @@
       margin: 15px 0;
     }
     .voucher-list li {
-      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
       border-bottom: 1px dashed #e0e0e0;
+      gap: 10px;
     }
     .voucher-list li:last-child {
       border-bottom: none;
+    }
+    .voucher-title {
+      font-weight: bold;
+    }
+    .voucher-price {
+      font-weight: bold;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -163,9 +175,11 @@
         <div class="price-item">
           <h3>Individuelle Anfragen</h3>
           <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach per WhatsApp.</p>
-          <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
-            💬 Individuelle Anfrage via WhatsApp
-          </a>
+          <div style="text-align: center;">
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
+              💬 Individuelle Anfrage via WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -193,18 +207,32 @@
       <p>Schreib mir einfach per WhatsApp, welchen Gutschein du verschenken möchtest:</p>
       
       <ul class="voucher-list">
-        <li><strong>Sportmassage (60 Min.):</strong> 59 €</li>
-        <li><strong>Rücken- & Nackenmassage (45 Min.):</strong> 45 €</li>
-        <li><strong>Rücken- & Nackenmassage (30 Min.):</strong> 35 €</li>
-        <li><strong>Wellnessmassage (60 Min.):</strong> 55 €</li>
+        <li>
+          <span class="voucher-title">Sportmassage (60 Min.)</span>
+          <span class="voucher-price">59 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Rücken- & Nackenmassage (45 Min.)</span>
+          <span class="voucher-price">45 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Rücken- & Nackenmassage (30 Min.)</span>
+          <span class="voucher-price">35 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Wellnessmassage (60 Min.)</span>
+          <span class="voucher-price">55 €</span>
+        </li>
       </ul>
 
       <p>Den personalisierten Gutschein erhältst du digital per E-Mail oder persönlich vor Ort in Unterhaching. Die Bezahlung erfolgt vorab per PayPal oder in bar.</p>
       <p>Die Terminbuchung erfolgt anschließend direkt über die Website.</p>
 
-      <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
-        🎁 Gutschein per WhatsApp anfragen
-      </a>
+      <div style="text-align: center; margin-top: 20px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+          🎁 Gutschein per WhatsApp anfragen
+        </a>
+      </div>
     </section>
 
     <!-- RECHTLICHES -->
