@@ -13,23 +13,37 @@
       --text: #1a1a1a;
       --subtext: #4a4a4a;
     }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+    html { 
+      scroll-behavior: smooth; 
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0; padding: 0;
-      background-color: var(--bg); color: var(--text);
+      margin: 0; 
+      padding: 0;
+      background-color: var(--bg); 
+      color: var(--text);
       line-height: 1.5;
     }
     header {
-      background-color: var(--bg); color: var(--primary);
-      text-align: center; padding: 40px 25px 25px 25px;
-      max-width: 750px; margin: 0 auto; box-sizing: border-box;
+      background-color: var(--bg); 
+      color: var(--primary);
+      text-align: center; 
+      padding: 30px 20px 20px 20px;
+      max-width: 750px; 
+      margin: 0 auto;
     }
     header h1 {
-      margin: 0; font-size: 2.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px;
+      margin: 0; 
+      font-size: 2.2rem; 
+      font-weight: 800; 
+      line-height: 1.1; 
+      letter-spacing: -0.5px;
     }
     .header-logo {
-      max-width: 180px;
+      max-width: 160px;
       width: 100%;
       height: auto;
       margin: 15px auto;
@@ -37,71 +51,171 @@
       mix-blend-mode: multiply;
     }
     header .subtitle {
-      font-size: 1.3rem; margin-top: 8px; margin-bottom: 25px; font-weight: 500; color: var(--primary);
+      font-size: 1.2rem; 
+      margin-top: 8px; 
+      margin-bottom: 20px; 
+      font-weight: 500; 
+      color: var(--primary);
     }
     header .location-info {
-      font-size: 1.05rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto;
+      font-size: 1rem; 
+      line-height: 1.45; 
+      color: var(--primary); 
+      max-width: 650px; 
+      margin: 0 auto;
     }
     nav {
-      background: var(--accent); display: flex; justify-content: center;
-      gap: 15px; padding: 14px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+      background: var(--accent); 
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      gap: 12px 18px; 
+      padding: 12px 15px; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      flex-wrap: wrap;
     }
-    nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.95rem; }
-    .container { max-width: 750px; margin: 0 auto; padding: 25px 20px; }
+    nav a { 
+      color: white; 
+      text-decoration: none; 
+      font-weight: bold; 
+      font-size: 0.9rem; 
+      white-space: nowrap;
+    }
+    .container { 
+      max-width: 750px; 
+      margin: 0 auto; 
+      padding: 20px 15px; 
+    }
     section {
-      background: #ffffff; border-radius: 12px;
-      padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      background: #ffffff; 
+      border-radius: 12px;
+      padding: 22px 18px; 
+      margin-bottom: 20px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      scroll-margin-top: 70px;
     }
-    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.6rem; }
-    .price-list { display: flex; flex-direction: column; gap: 20px; }
-    .price-item { border-left: 4px solid var(--accent); padding-left: 12px; }
-    .price-item h3 { margin: 0 0 5px 0; color: var(--primary); }
-    .profile-container { text-align: center; margin-bottom: 20px; }
+    h2 { 
+      color: var(--primary); 
+      margin-top: 0; 
+      border-bottom: 2px solid var(--bg); 
+      padding-bottom: 10px; 
+      font-size: 1.5rem; 
+    }
+    .price-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 20px; 
+    }
+    .price-item { 
+      border-left: 4px solid var(--accent); 
+      padding-left: 12px; 
+    }
+    .price-item h3 { 
+      margin: 0 0 5px 0; 
+      color: var(--primary); 
+    }
+    .profile-container { 
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
     .profile-img {
-      width: 180px; height: 180px; object-fit: cover;
-      border-radius: 50%; border: 4px solid var(--accent); box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      width: 160px; 
+      height: 160px; 
+      object-fit: cover;
+      border-radius: 50%; 
+      border: 4px solid var(--accent); 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
     .slot-btn {
       display: inline-block;
+      width: 100%;
+      max-width: 360px;
       background-color: var(--accent);
       color: white;
       text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 6px;
+      padding: 14px 18px;
+      border-radius: 8px;
       font-weight: bold;
       font-size: 0.95rem;
       margin-top: 10px;
       text-align: center;
+      line-height: 1.3;
     }
-    footer { text-align: center; padding: 25px; font-size: 0.85rem; color: var(--subtext); }
-    .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
+    footer { 
+      text-align: center; 
+      padding: 25px 15px; 
+      font-size: 0.85rem; 
+      color: var(--subtext); 
+    }
+    .legal-content { 
+      display: none; 
+      font-size: 0.85rem; 
+      margin-top: 15px; 
+      text-align: left; 
+    }
     button.legal-btn {
-      background: #e5e3dc; border: 1px solid #d0cecf; padding: 8px 12px;
-      border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 8px; margin-bottom: 10px; color: var(--primary);
+      background: #e5e3dc; 
+      border: 1px solid #d0cecf; 
+      padding: 8px 12px;
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-weight: bold; 
+      margin-right: 8px; 
+      margin-bottom: 10px; 
+      color: var(--primary);
       display: inline-block;
     }
+
+    /* VOUCHER / PREIS-LAYOUT OPTIMIERUNG FOR MOBILE */
     .voucher-list {
       list-style: none;
       padding: 0;
-      margin: 15px 0;
+      margin: 20px 0;
     }
     .voucher-list li {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: baseline;
-      padding: 10px 0;
+      align-items: center;
+      padding: 12px 0;
       border-bottom: 1px dashed #e0e0e0;
-      gap: 10px;
+      gap: 8px;
     }
     .voucher-list li:last-child {
       border-bottom: none;
     }
     .voucher-title {
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex: 1 1 200px;
     }
     .voucher-price {
-      font-weight: bold;
+      font-weight: 800;
+      font-size: 1rem;
       white-space: nowrap;
+      color: var(--accent);
+      text-align: right;
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        gap: 8px 14px;
+        padding: 10px;
+      }
+      nav a {
+        font-size: 0.85rem;
+      }
+      section {
+        padding: 18px 14px;
+      }
+      .voucher-list li {
+        padding: 10px 0;
+      }
+      .voucher-title {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -121,8 +235,8 @@
   <nav>
     <a href="#termine">Termine</a>
     <a href="#weitere-massagen">Weitere Massagen</a>
-    <a href="#ueber-mich">Über mich</a>
     <a href="#gutscheine">Gutscheine</a>
+    <a href="#ueber-mich">Über mich</a>
     <a href="#rechtliches">Rechtliches</a>
   </nav>
 
@@ -130,19 +244,19 @@
     
     <!-- TERMIN BUCHUNG: SPORTMASSAGE KASTEN -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
-      <div style="background-color: var(--card-bg); padding: 35px 25px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-        <h2 style="font-size: 2.2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
-        <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
+      <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
+        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
         
         <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
           Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden
         </p>
         
-        <div style="font-size: 1.25rem; font-style: italic; font-weight: bold; margin-bottom: 8px; color: #000;">
+        <div style="font-size: 1.15rem; font-style: italic; font-weight: bold; margin-bottom: 8px; color: #000;">
           ! Aktion nur bis Ende Oktober 2026 !
         </div>
         
-        <div style="font-size: 1.3rem; margin-bottom: 25px;">
+        <div style="font-size: 1.2rem; margin-bottom: 25px;">
           <span style="color: #1bb753; font-weight: bold;">60 Minuten für 55 €</span> 
           <span style="text-decoration: line-through; font-weight: bold; color: #000;">statt 59 €</span>
         </div>
@@ -184,23 +298,6 @@
       </div>
     </section>
 
-    <!-- ÜBER MICH -->
-    <section id="ueber-mich">
-      <h2>Über mich</h2>
-      <div class="profile-container">
-        <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
-      </div>
-      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
-      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
-      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
-      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
-      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
-      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
-      <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
-        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
-      </p>
-    </section>
-
     <!-- GUTSCHEINE -->
     <section id="gutscheine">
       <h2>Gutscheine</h2>
@@ -233,6 +330,23 @@
           🎁 Gutschein per WhatsApp anfragen
         </a>
       </div>
+    </section>
+
+    <!-- ÜBER MICH -->
+    <section id="ueber-mich">
+      <h2>Über mich</h2>
+      <div class="profile-container">
+        <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
+      </div>
+      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
+      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
+      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
+      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
+      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
+      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
+      <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
+        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
+      </p>
     </section>
 
     <!-- RECHTLICHES -->
@@ -384,11 +498,11 @@
                 color: #ffffff;
                 text-decoration: none;
                 padding: 12px 20px;
-                border-radius: 4px;
+                border-radius: 6px;
                 font-weight: bold;
                 font-size: 0.95rem;
                 width: 100%;
-                max-width: 340px;
+                max-width: 360px;
                 box-sizing: border-box;
                 display: block;
                 text-align: center;
