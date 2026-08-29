@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bodywork Unterhaching – Termin buchen</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f7f9fa;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #1a365d;
+    }
+    p.sub {
+      text-align: center;
+      color: #4a5568;
+      margin-bottom: 30px;
+    }
+    .slot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .slot-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+      transition: transform 0.1s ease;
+    }
+    .slot-btn:active {
+      transform: scale(0.98);
+    }
+    .loading, .no-slots {
+      text-align: center;
+      padding: 20px;
+      color: #718096;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bodywork Unterhaching</h1>
+  <p class="sub">Wähle deinen Wunschtermin für eine Massage aus:</p>
+
+  <div id="slots" class="slot-list">
+    <div class="loading">Termine werden geladen...</div>
+  </div>
+
+  <script>
+    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
+    const phone = '4915560764392';
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+
+    async function loadSlots() {
+      try {
+        const response = await fetch(csvUrl);
+        const data = await response.text();
+        const rows = data.split('\n').slice(1);
+        const slotsContainer = document.getElementById('slots');
+        slotsContainer.innerHTML = '';
+
+        let count = 0;
+
+        rows.forEach(row => {
+          const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
+          if (cols.length >= 4) {
+            const datum = cols[0];
+            const start = cols[1];
+            const ende = cols[2];
+            const status = cols[3].toLowerCase();
+
+            if (status === 'frei') {
+              count++;
+              const text = `Hallo Bodywork Unterhaching, ich möchte gerne folgenden Termin verbindlich anfragen:\nDatum: ${datum}\nUhrzeit: ${start} - ${ende} Uhr.`;
+              const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+              const btn = document.createElement('a');
+              btn.className = 'slot-btn';
+              btn.href = waUrl;
+              btn.target = '_blank';
+              btn.innerHTML = `<span>📅 ${datum}</span> <span>⏰ ${start} - ${ende} Uhr</span>`;
+              slotsContainer.appendChild(btn);
+            }
+          }
+        });
+
+        if (count === 0) {
+          slotsContainer.innerHTML = '<div class="no-slots">Derzeit sind keine freien Termine verfügbar. Bitte melde dich direkt per WhatsApp.</div>';
+        }
+      } catch (err) {
+        document.getElementById('slots').innerHTML = '<div class="no-slots">Fehler beim Laden der Termine.</div>';
+      }
+    }
+
+    loadSlots();
+  </script>
+</body>
+</html>
