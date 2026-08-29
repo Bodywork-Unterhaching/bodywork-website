@@ -6,44 +6,52 @@
   <title>Bodywork Unterhaching – Sport- & Wellnessmassagen</title>
   <style>
     :root {
-      --primary: #1a365d;
-      --accent: #25d366;
-      --bg: #f7f9fa;
-      --text: #2d3748;
-      --card-bg: #ffffff;
+      --primary: #1a1a1a;
+      --accent: #2e4d46;
+      --bg: #f8f6f0;
+      --card-bg: #ededec;
+      --text: #1a1a1a;
+      --subtext: #4a4a4a;
     }
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0; padding: 0;
       background-color: var(--bg); color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
     }
     header {
-      background-color: var(--primary); color: white;
-      text-align: center; padding: 30px 20px;
+      background-color: var(--bg); color: var(--primary);
+      text-align: left; padding: 40px 25px 20px 25px;
+      max-width: 750px; margin: 0 auto; box-sizing: border-box;
     }
-    .logo-img { max-width: 220px; height: auto; margin-bottom: 10px; }
-    header h1 { margin: 0; font-size: 2.2rem; }
-    header p { margin-top: 5px; font-size: 1.1rem; opacity: 0.9; }
+    header h1 {
+      margin: 0; font-size: 2.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px;
+    }
+    header .subtitle {
+      font-size: 1.3rem; margin-top: 8px; margin-bottom: 30px; font-weight: 500; color: var(--primary);
+    }
+    header .location-info {
+      font-size: 1.05rem; line-height: 1.45; color: var(--primary); max-width: 600px;
+    }
     nav {
-      background: #2b6cb0; display: flex; justify-content: center;
-      gap: 15px; padding: 12px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+      background: var(--accent); display: flex; justify-content: center;
+      gap: 15px; padding: 14px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
     }
     nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.95rem; }
-    .container { max-width: 750px; margin: 0 auto; padding: 20px; }
+    .container { max-width: 750px; margin: 0 auto; padding: 25px 20px; }
     section {
-      background: var(--card-bg); border-radius: 12px;
-      padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: #ffffff; border-radius: 12px;
+      padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.03);
     }
-    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.6rem; }
     .price-list { display: flex; flex-direction: column; gap: 20px; }
-    .price-item { border-left: 4px solid var(--primary); padding-left: 12px; }
+    .price-item { border-left: 4px solid var(--accent); padding-left: 12px; }
     .price-item h3 { margin: 0 0 5px 0; color: var(--primary); }
     .profile-container { text-align: center; margin-bottom: 20px; }
     .profile-img {
       width: 180px; height: 180px; object-fit: cover;
-      border-radius: 50%; border: 4px solid var(--primary); box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 50%; border: 4px solid var(--accent); box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
     .slot-btn {
       display: inline-block;
@@ -51,25 +59,27 @@
       color: white;
       text-decoration: none;
       padding: 12px 18px;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: bold;
       font-size: 0.95rem;
       margin-top: 10px;
     }
-    footer { text-align: center; padding: 20px; font-size: 0.85rem; color: #718096; }
+    footer { text-align: center; padding: 25px; font-size: 0.85rem; color: var(--subtext); }
     .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
     button.legal-btn {
-      background: #edf2f7; border: 1px solid #cbd5e0; padding: 8px 12px;
-      border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 8px;
+      background: #e5e3dc; border: 1px solid #d0cecf; padding: 8px 12px;
+      border-radius: 6px; cursor: pointer; font-weight: bold; margin-right: 8px; color: var(--primary);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="logo.png" alt="Bodywork Unterhaching Logo" class="logo-img" onerror="this.style.display='none'">
-    <h1>Bodywork Unterhaching</h1>
-    <p>Sport- & Wellnessmassagen | Rüdiger Hammer</p>
+    <h1>Bodywork<br>Unterhaching</h1>
+    <div class="subtitle">Sport- und Wellnessmassagen</div>
+    <div class="location-info">
+      Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt. Der genaue Standort folgt nach der Buchung.
+    </div>
   </header>
 
   <nav>
@@ -84,11 +94,11 @@
     
     <!-- TERMIN BUCHUNG: SPORTMASSAGE KASTEN -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
-      <div style="background-color: #ededec; padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0;">Sportmassage</h2>
+      <div style="background-color: var(--card-bg); padding: 35px 25px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+        <h2 style="font-size: 2.2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
         <div style="font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
         
-        <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px;">
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
           Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden
         </p>
         
@@ -252,7 +262,7 @@
                 font-weight: bold;
                 font-size: 0.95rem;
                 width: 100%;
-                max-width: 320px;
+                max-width: 340px;
                 box-sizing: border-box;
                 display: block;
                 text-align: center;
