@@ -1,307 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bodywork Unterhaching – Sport- & Wellnessmassagen</title>
-  <style>
-    :root {
-      --primary: #1a365d;
-      --accent: #25d366;
-      --bg: #f7f9fa;
-      --text: #2d3748;
-      --card-bg: #ffffff;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    header {
-      background-color: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 30px 20px;
-    }
-    .logo-img {
-      max-width: 220px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
-    header p {
-      margin-top: 5px;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-    nav {
-      background: #2b6cb0;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-    .container {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    section {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    h2 {
-      color: var(--primary);
-      margin-top: 0;
-      border-bottom: 2px solid var(--bg);
-      padding-bottom: 10px;
-    }
-    .action-badge {
-      background-color: #e53e3e;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    .price-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .price-item {
-      border-left: 4px solid var(--primary);
-      padding-left: 12px;
-    }
-    .price-item h3 {
-      margin: 0 0 5px 0;
-      color: var(--primary);
-    }
-    .profile-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .profile-img {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--primary);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .slot-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .slot-btn, .voucher-btn, .offer-btn {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--accent);
-      color: white;
-      text-decoration: none;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-      margin-top: 10px;
-    }
-    .loading, .no-slots {
-      text-align: center;
-      padding: 15px;
-      color: #718096;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.85rem;
-      color: #718096;
-    }
-    .legal-content {
-      display: none;
-      font-size: 0.85rem;
-      margin-top: 15px;
-      text-align: left;
-    }
-    button.legal-btn {
-      background: #edf2f7;
-      border: 1px solid #cbd5e0;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-right: 8px;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <!-- Logo Einbindung (Blendet sich automatisch aus, falls noch kein Logo hochgeladen wurde) -->
-    <img src="logo.png" alt="Bodywork Unterhaching Logo" class="logo-img" onerror="this.style.display='none'">
-    <h1>Bodywork Unterhaching</h1>
-    <p>Sport- & Wellnessmassagen | Rüdiger Hammer</p>
-  </header>
-
-  <nav>
-    <a href="#termine">Termine</a>
-    <a href="#angebot">Angebot & Preise</a>
-    <a href="#ueber-mich">Über mich</a>
-    <a href="#gutscheine">Gutscheine</a>
-    <a href="#rechtliches">Rechtliches</a>
-  </nav>
-
-  <div class="container">
-    
-    <!-- TERMIN BUCHUNG -->
-    <section id="termine">
-      <h2>Freie Termine buchen</h2>
-      <p>Klicke auf deinen Wunschtermin, um die Anfrage direkt per WhatsApp zu senden:</p>
-      <div id="slots" class="slot-list">
-        <div class="loading">Termine werden geladen...</div>
-      </div>
-    </section>
-
-    <!-- ANGEBOT & PREISE -->
-    <section id="angebot">
-      <h2>Angebot & Preise</h2>
-      <div class="price-list">
-        
-        <!-- 60 Min Sportmassage -->
-        <div class="price-item">
-          <h3>Sportmassage</h3>
-          <span class="action-badge">! Aktion nur bis Ende Oktober 2026 !</span>
-          <p>Ganzkörperorientiert. Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden.</p>
-          <p><strong>60 Minuten:</strong> 55 € <del style="color: #a0aec0;">statt 59 €</del></p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20die%2060%20Min.%20Sportmassage%20f%C3%BCr%2055%20Euro%20anfragen." target="_blank">
-            👉 60 Min. Sportmassage (55 €) via WhatsApp
-          </a>
-        </div>
-
-        <!-- Rücken- und Nackenmassage -->
-        <div class="price-item">
-          <h3>Rücken- und Nackenmassage</h3>
-          <p>Gezielte Massage für Rücken und Nacken zur muskulären Lockerung und Entspannung. Sanfte bis moderate Massage zur Entspannung von Körper und Geist.</p>
-          <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20die%20R%C3%BCcken-%20und%20Nackenmassage%20f%C3%BCr%2045%20Euro%20anfragen." target="_blank">
-            👉 Rücken- & Nackenmassage (45 €) via WhatsApp
-          </a>
-        </div>
-
-        <!-- Wellnessmassage -->
-        <div class="price-item">
-          <h3>Wellnessmassage</h3>
-          <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
-          <p><strong>60 Minuten:</strong> 55 €</p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20f%C3%BCr%2055%20Euro%20anfragen." target="_blank">
-            👉 Wellnessmassage (55 €) via WhatsApp
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ÜBER MICH -->
-    <section id="ueber-mich">
-      <h2>Über mich</h2>
-      <div class="profile-container">
-        <!-- Profilbild Einbindung -->
-        <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img" onerror="this.style.display='none'">
-      </div>
-      <p>Hi, ich bin <strong>Rüdiger</strong> – Gründer von <em>Bodywork Unterhaching</em>.</p>
-      <p>Mein Ziel ist es, dir mit gezielten Massagen eine echte Auszeit vom Alltag zu schenken. Egal ob zur körperlichen Regeneration nach dem Sport oder einfach zum Durchatmen und Entspannen: Bei mir stehst du und dein Wohlbefinden im Mittelpunkt.</p>
-      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
-      <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
-        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
-      </p>
-    </section>
-
-    <!-- GUTSCHEINE -->
-    <section id="gutscheine">
-      <h2>Gutscheine</h2>
-      <p>Schenke einem wertvollen Menschen eine Auszeit und Entspannung! Gutscheine können individuell ausgestellt und direkt per WhatsApp angefragt werden:</p>
-      <a class="voucher-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
-        🎁 Gutschein per WhatsApp anfragen
-      </a>
-    </section>
-
-    <!-- RECHTLICHES (IMPRESSUM & DATENSCHUTZ) -->
-    <section id="rechtliches">
-      <h2>Rechtliches</h2>
-      <button class="legal-btn" onclick="toggleLegal('imp-text')">Impressum anzeigen</button>
-      <button class="legal-btn" onclick="toggleLegal('ds-text')">Datenschutz anzeigen</button>
-
-      <div id="imp-text" class="legal-content">
-        <h3>Impressum</h3>
-        <p><strong>Angaben gemäß § 5 TMG / Verantwortlich:</strong><br>
-        Bodywork Unterhaching<br>
-        Rüdiger Hammer<br>
-        Münchner Straße 7<br>
-        82008 Unterhaching</p>
-        <p><strong>Kontakt:</strong><br>
-        Telefon: +49 155 60764392<br>
-        E-Mail: massage@bodywork-unterhaching.de</p>
-      </div>
-
-      <div id="ds-text" class="legal-content">
-        <h3>Datenschutzerklärung</h3>
-        <p><strong>Verantwortlicher:</strong><br>
-        Rüdiger Hammer, Münchner Straße 7, 82008 Unterhaching<br>
-        E-Mail: massage@bodywork-unterhaching.de | Telefon: +49 155 60764392</p>
-        
-        <p><strong>Hosting (GitHub Pages):</strong><br>
-        Diese Website wird über GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). Beim Aufruf der Seite erfasst GitHub automatisch Log-Dateien (z. B. IP-Adresse, Datum/Uhrzeit des Zugriffs, Browsertyp). Die Datenverarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an einer sicheren und stabilen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
-
-        <p><strong>Kommunikation über WhatsApp:</strong><br>
-        Für die Terminvereinbarung und Anfragen nutzen wir den Messenger-Dienst WhatsApp (WhatsApp Ireland Limited). Wenn Sie uns über WhatsApp kontaktieren, verarbeiten wir Ihre übermittelten Kontaktdaten (insbes. Telefonnummer und Name). Die Nutzung erfolgt freiwillig (Art. 6 Abs. 1 lit. a/b DSGVO). Sie können der Kommunikation jederzeit widersprechen.</p>
-
-        <p><strong>Cookies & Tracking:</strong><br>
-        Diese Website verwendet keine Analyse- oder Tracking-Cookies.</p>
-
-        <p><strong>Ihre Rechte:</strong><br>
-        Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer Daten. Zuständige Aufsichtsbehörde: Bayerisches Landesamt für Datenschutzaufsicht (BayLDA).</p>
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
-  </footer>
-
-  <script>
-    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
-    const phone = '4915560764392';
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
-
-    async function loadSlots() {
+async function loadSlots() {
       try {
         const response = await fetch(csvUrl);
         const data = await response.text();
@@ -310,25 +7,35 @@
         slotsContainer.innerHTML = '';
 
         let count = 0;
+        const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
 
         rows.forEach(row => {
           const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
           if (cols.length >= 4) {
-            const datum = cols[0];
+            const datumStr = cols[0];
             const start = cols[1];
             const ende = cols[2];
             const status = cols[3].toLowerCase();
 
             if (status === 'frei') {
               count++;
-              const text = `Hallo Bodywork Unterhaching, ich möchte gerne folgenden Termin verbindlich anfragen:\nDatum: ${datum}\nUhrzeit: ${start} - ${ende} Uhr.`;
-              const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+              // Wochentag berechnen
+              const parts = datumStr.split('.');
+              let wochentag = '';
+              if (parts.length === 3) {
+                const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
+                wochentag = days[dateObj.getDay()] + ' ';
+              }
+
+              const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage anfragen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr.`;
+              const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
               const btn = document.createElement('a');
               btn.className = 'slot-btn';
               btn.href = waUrl;
               btn.target = '_blank';
-              btn.innerHTML = `<span>📅 ${datum}</span> <span>⏰ ${start} - ${ende} Uhr</span>`;
+              btn.innerHTML = `<span>📅 ${wochentag}${datumStr} - 60 Min. Sportmassage (55 €)</span> <span>⏰ ${start} - ${ende} Uhr</span>`;
               slotsContainer.appendChild(btn);
             }
           }
@@ -341,13 +48,3 @@
         document.getElementById('slots').innerHTML = '<div class="no-slots">Fehler beim Laden der Termine.</div>';
       }
     }
-
-    function toggleLegal(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-
-    loadSlots();
-  </script>
-</body>
-</html>
