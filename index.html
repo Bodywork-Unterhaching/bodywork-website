@@ -42,11 +42,20 @@
       border-radius: 4px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 10px;
     }
     .slot-list { display: flex; flex-direction: column; gap: 12px; }
-    .slot-btn, .voucher-btn, .offer-btn {
-      display: flex; justify-content: space-between; align-items: center;
-      background-color: var(--accent); color: white; text-decoration: none;
-      padding: 16px 20px; border-radius: 12px; font-weight: bold; font-size: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.08); margin-top: 10px;
+    .slot-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+      margin-top: 10px;
     }
     .price-list { display: flex; flex-direction: column; gap: 20px; }
     .price-item { border-left: 4px solid var(--primary); padding-left: 12px; }
@@ -104,7 +113,7 @@
           <h3>Rücken- und Nackenmassage</h3>
           <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
+          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
             💬 Rücken- & Nackenmassage via WhatsApp
           </a>
         </div>
@@ -113,7 +122,7 @@
           <h3>Wellnessmassage</h3>
           <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>60 Minuten:</strong> 55 €</p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20anfragen." target="_blank">
+          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20anfragen." target="_blank">
             💬 Wellnessmassage (60 Min.) via WhatsApp
           </a>
         </div>
@@ -121,7 +130,7 @@
         <div class="price-item">
           <h3>Individuelle Anfragen</h3>
           <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach per WhatsApp.</p>
-          <a class="offer-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
+          <a class="offer-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
             💬 Individuelle Anfrage via WhatsApp
           </a>
         </div>
@@ -146,7 +155,7 @@
     <section id="gutscheine">
       <h2>Gutscheine</h2>
       <p>Schenke einem wertvollen Menschen eine Auszeit und Entspannung! Gutscheine können individuell ausgestellt werden:</p>
-      <a class="voucher-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+      <a class="voucher-btn slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
         🎁 Gutschein per WhatsApp anfragen
       </a>
     </section>
@@ -230,7 +239,11 @@
               btn.className = 'slot-btn';
               btn.href = waUrl;
               btn.target = '_blank';
-              btn.innerHTML = `<span>📅 ${wochentag}${datumStr} - 60 Min. Sportmassage (55 €)</span> <span>⏰ ${start} - ${ende} Uhr</span>`;
+              btn.innerHTML = `
+                <div>📅 ${wochentag}${datumStr}</div>
+                <div>💆‍♂️ 60 Min. Sportmassage (55 €)</div>
+                <div>⏰ ${start} - ${ende} Uhr</div>
+              `;
               slotsContainer.appendChild(btn);
             }
           }
