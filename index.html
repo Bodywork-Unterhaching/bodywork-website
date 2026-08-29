@@ -168,7 +168,6 @@
       display: inline-block;
     }
 
-    /* VOUCHER / PREIS-LAYOUT OPTIMIERUNG FOR MOBILE */
     .voucher-list {
       list-style: none;
       padding: 0;
@@ -487,7 +486,7 @@
                 wochentag = days[dateObj.getDay()] + ', ';
               }
 
-              const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage anfragen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr.`;
+              const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
               const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
               const btn = document.createElement('a');
