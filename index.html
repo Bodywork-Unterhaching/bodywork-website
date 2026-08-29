@@ -8,7 +8,7 @@
     :root {
       --primary: #1a1a1a;
       --accent: #2e4d46;
-      --bg: #f8f6f0;
+      --bg: #f5f4ef;
       --card-bg: #ededec;
       --text: #1a1a1a;
       --subtext: #4a4a4a;
@@ -34,6 +34,7 @@
       height: auto;
       margin: 15px auto;
       display: block;
+      mix-blend-mode: multiply;
     }
     header .subtitle {
       font-size: 1.3rem; margin-top: 8px; margin-bottom: 25px; font-weight: 500; color: var(--primary);
@@ -168,8 +169,11 @@
       <div class="profile-container">
         <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img" onerror="this.style.display='none'">
       </div>
-      <p>Hi, ich bin <strong>Rüdiger</strong> – Gründer von <em>Bodywork Unterhaching</em>.</p>
-      <p>Mein Ziel ist es, dir mit gezielten Massagen eine echte Auszeit vom Alltag zu schenken. Egal ob zur körperlichen Regeneration nach dem Sport oder einfach zum Durchatmen und Entspannen: Bei mir stehst du und dein Wohlbefinden im Mittelpunkt.</p>
+      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
+      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
+      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
+      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
+      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
       <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
         <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
@@ -275,7 +279,7 @@
         Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.<br>
         Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht<br>
         Waldtruderingstraße 101, 81675 München<br>
-        Telefon: 089 21267 0, E-Mail: poststelle@lda.bayern.de</p>
+        Telefon: 089 21267 0, E-Mail: poststelle@bayern.de</p>
 
         <p>Technische und organisatorische Maßnahmen: Wir setzen angemessene Maßnahmen ein, um deine Daten zu schützen.</p>
 
@@ -343,7 +347,7 @@
                 display: block;
                 text-align: center;
               `;
-              btn.innerHTML = `${wochentag}${datumStr} | ${start} - ${ende} Uhr`;
+              btn.innerHTML = `<div>${wochentag}${datumStr}</div><div style="font-size: 0.9em; opacity: 0.9;">${start} - ${ende} Uhr</div>`;
               slotsContainer.appendChild(btn);
             }
           }
