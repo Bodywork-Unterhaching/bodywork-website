@@ -158,7 +158,7 @@
     button.legal-btn, button.toggle-btn {
       background: #e5e3dc; 
       border: 1px solid #d0cecf; 
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 6px; 
       cursor: pointer; 
       font-weight: bold; 
@@ -169,7 +169,7 @@
     button.toggle-btn {
       width: 100%;
       max-width: 450px;
-      margin: 5px auto;
+      margin: 6px auto;
       text-align: center;
     }
 
@@ -206,11 +206,27 @@
     .slot-group {
       display: none;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 12px;
+      margin-bottom: 12px;
       width: 100%;
+    }
+
+    .slot-card {
+      background-color: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      width: 100%;
+      max-width: 380px;
+      box-sizing: border-box;
+      display: block;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     @media (max-width: 480px) {
@@ -256,6 +272,7 @@
 
   <div class="container">
     
+    <!-- TERMIN BUCHUNG: SPORTMASSAGE KASTEN -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
         <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
@@ -274,10 +291,312 @@
           <span style="text-decoration: line-through; font-weight: bold; color: #000;">statt 59 €</span>
         </div>
 
+        <!-- Aufklappbare Termin-Blöcke -->
         <div style="display: flex; flex-direction: column; align-items: center;">
           
           <button class="toggle-btn" onclick="toggleElement('week-1')">
             Termine von Montag, den 01.09. bis Samstag, den 05.09.
           </button>
           <div id="week-1" class="slot-group">
-            <div style="color: #66
+            <div style="color: #666; font-size: 0.9rem;">Termine werden geladen...</div>
+          </div>
+
+          <button class="toggle-btn" onclick="toggleElement('week-2')">
+            Termine von Montag, den 07.09. bis Samstag, den 12.09.
+          </button>
+          <div id="week-2" class="slot-group">
+            <div style="color: #666; font-size: 0.9rem;">Termine werden geladen...</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WEITERE MASSAGEN -->
+    <section id="weitere-massagen">
+      <h2>Weitere Massagen</h2>
+      <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp anfragen:</p>
+      
+      <div class="price-list">
+        <div class="price-item">
+          <h3>Rücken- und Nackenmassage</h3>
+          <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
+          <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
+          <div style="text-align: center;">
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
+              💬 Rücken- & Nackenmassage via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="price-item">
+          <h3>Wellnessmassage</h3>
+          <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
+          <p><strong>60 Minuten:</strong> 55 €</p>
+          <div style="text-align: center;">
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20%2860%20Min.%29%20anfragen." target="_blank">
+              💬 Wellnessmassage (60 Min.) via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="price-item">
+          <h3>Individuelle Anfragen</h3>
+          <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach per WhatsApp.</p>
+          <div style="text-align: center;">
+            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
+              💬 Individuelle Anfrage via WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUTSCHEINE -->
+    <section id="gutscheine">
+      <h2>Gutscheine</h2>
+      <p>Schreib mir einfach per WhatsApp, welchen Gutschein du verschenken möchtest:</p>
+      
+      <ul class="voucher-list">
+        <li>
+          <span class="voucher-title">Sportmassage (60 Min.)</span>
+          <span class="voucher-price">59 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Rücken- & Nackenmassage (45 Min.)</span>
+          <span class="voucher-price">45 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Rücken- & Nackenmassage (30 Min.)</span>
+          <span class="voucher-price">35 €</span>
+        </li>
+        <li>
+          <span class="voucher-title">Wellnessmassage (60 Min.)</span>
+          <span class="voucher-price">55 €</span>
+        </li>
+      </ul>
+
+      <p>Den personalisierten Gutschein erhältst du digital per E-Mail oder persönlich vor Ort in Unterhaching. Die Bezahlung erfolgt vorab per PayPal oder in bar.</p>
+      <p>Die Terminbuchung erfolgt anschließend direkt über die Website.</p>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+          🎁 Gutschein per WhatsApp anfragen
+        </a>
+      </div>
+    </section>
+
+    <!-- ÜBER MICH -->
+    <section id="ueber-mich">
+      <h2>Über mich</h2>
+      <div class="profile-container">
+        <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
+      </div>
+      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
+      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
+      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
+      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
+      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
+      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
+      <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
+        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
+      </p>
+    </section>
+
+    <!-- RECHTLICHES -->
+    <section id="rechtliches">
+      <h2>Rechtliches</h2>
+      <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
+      <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
+
+      <div id="imp-text" class="legal-content">
+        <h3>Impressum</h3>
+        <p><strong>Angaben gemäß § 5 TMG / Verantwortlich:</strong><br>
+        Bodywork Unterhaching<br>
+        Rüdiger Hammer<br>
+        Münchner Straße 7<br>
+        82008 Unterhaching</p>
+        
+        <p><strong>Kontakt:</strong><br>
+        Telefon: +49 155 60764392<br>
+        E-Mail: massage@bodywork-unterhaching.de</p>
+
+        <p><strong>Steuernummer</strong><br>
+        147/173/90874 - Finanzamt München</p>
+
+        <p><strong>Umsatzsteuer</strong><br>
+        Es wird keine Umsatzsteuer erhoben, da es sich um eine Kleinunternehmertätigkeit gemäß § 19 UStG handelt.</p>
+
+        <p><strong>Rechtliches und Rahmenbedingungen</strong><br>
+        Mitglied der Berufsgenossenschaft für Gesundheitsdienst und Wohlfahrtspflege. (BGW)<br><br>
+        Es besteht eine Betriebshaftpflichtversicherung.</p>
+      </div>
+
+      <div id="ds-text" class="legal-content">
+        <h3>Datenschutzerklärung</h3>
+        
+        <p><strong>Verantwortlicher</strong><br>
+        Bodywork Unterhaching<br>
+        Rüdiger Hammer<br>
+        Münchner Straße 7<br>
+        82008 Unterhaching<br>
+        E-Mail: massage@bodywork-unterhaching.de<br>
+        Telefon: +49 155 60764392</p>
+
+        <p><strong>Geltungsbereich:</strong><br>
+        Diese Datenschutzerklärung gilt für die Nutzung unserer Website sowie für die Kontaktaufnahme und Terminvereinbarung.</p>
+
+        <p><strong>Hosting über GitHub Pages:</strong><br>
+        Diese Website wird über GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). Beim Aufruf der Website werden durch GitHub automatisch Daten erfasst und in sogenannten Server-Logfiles gespeichert.</p>
+
+        <p>Dazu gehören insbesondere:</p>
+        <ul>
+          <li>IP-Adresse</li>
+          <li>Datum und Uhrzeit der Anfrage</li>
+          <li>Browsertyp und Browserversion</li>
+          <li>verwendetes Betriebssystem</li>
+          <li>Referrer URL</li>
+        </ul>
+
+        <p>Diese Daten sind technisch erforderlich, um die Website bereitzustellen, die Systemsicherheit zu gewährleisten und die Stabilität zu sichern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einem sicheren und funktionierenden Betrieb der Website. Die Datenübermittlung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln sowie dem Data Privacy Framework (DPF).</p>
+
+        <p><strong>Kommunikation über WhatsApp:</strong><br>
+        Für die Terminvereinbarung und Anfragen nutzen wir den Messenger-Dienst WhatsApp (WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland / Meta Platforms Inc.). Wenn Sie uns per WhatsApp kontaktieren, werden die von Ihnen übermittelten Daten (insbesondere Telefonnummer, Name und Chatnachrichten) verarbeitet.<br>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/Erfüllung) sowie unser berechtigtes Interesse an einer effizienten Kommunikation (Art. 6 Abs. 1 lit. f DSGVO). Es kann nicht ausgeschlossen werden, dass Daten an Muttergesellschaften von WhatsApp in den USA übertragen werden. Die Nutzung erfolgt freiwillig. Sie können die Kommunikation über WhatsApp jederzeit ablehnen oder die Löschung verlangen.</p>
+
+        <p><strong>Einbindung von Google Maps:</strong><br>
+        Auf dieser Website nutzen wir den Kartendienst Google Maps (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) zur Darstellung von Standortinformationen. Bei der Nutzung werden Informationen wie IP-Adresse und Standortdaten an Server von Google (auch in die USA) übertragen. Rechtsgrundlage ist unser berechtigtes Interesse an einer leichten Auffindbarkeit des Standorts (Art. 6 Abs. 1 lit. f DSGVO) bzw. Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+
+        <p><strong>Cookies:</strong><br>
+        Unsere Website verwendet ausschließlich technisch notwendige Funktionen zum Betrieb der Seite. Es werden keine Marketing- oder Analyse-Cookies eingesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+        <p><strong>Dauer der Speicherung:</strong><br>
+        Personenbezogene Daten werden nur so lange gespeichert, wie dies zur Erfüllung der genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
+
+        <p><strong>Betroffenenrechte:</strong><br>
+        Sie haben folgende Rechte:</p>
+        <ul>
+          <li>Auskunft über Ihre gespeicherten Daten</li>
+          <li>Berichtigung unrichtiger Daten</li>
+          <li>Löschung Ihrer Daten</li>
+          <li>Einschränkung der Verarbeitung</li>
+          <li>Datenübertragbarkeit</li>
+          <li>Widerspruch gegen die Verarbeitung</li>
+          <li>Widerruf erteilter Einwilligungen</li>
+        </ul>
+
+        <p>Zur Ausübung Ihrer Rechte können Sie sich jederzeit an uns wenden:<br>
+        E-Mail: massage@bodywork-unterhaching.de<br>
+        Telefon: +49 155 60764392</p>
+
+        <p><strong>Beschwerderecht:</strong><br>
+        Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.<br>
+        Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht<br>
+        Waldtruderingstraße 101, 81675 München<br>
+        Telefon: 089 21267 0, E-Mail: poststelle@bayern.de</p>
+
+        <p>Technische und organisatorische Maßnahmen: Wir setzen angemessene Maßnahmen ein, um deine Daten zu schützen.</p>
+
+        <p>© 2026 Bodywork Unterhaching</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
+  </footer>
+
+  <script>
+    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
+    const phone = '4915560764392';
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+
+    async function loadSlots() {
+      try {
+        const response = await fetch(csvUrl);
+        const data = await response.text();
+        const rows = data.split('\n').slice(1);
+        
+        const week1Container = document.getElementById('week-1');
+        const week2Container = document.getElementById('week-2');
+        
+        week1Container.innerHTML = '';
+        week2Container.innerHTML = '';
+
+        let countWeek1 = 0;
+        let countWeek2 = 0;
+        const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+        rows.forEach(row => {
+          const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
+          if (cols.length >= 4) {
+            const datumStr = cols[0];
+            const start = cols[1];
+            const ende = cols[2];
+            const status = cols[3].toLowerCase();
+
+            if (status === 'frei') {
+              const parts = datumStr.split('.');
+              if (parts.length === 3) {
+                const day = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10);
+                const year = parseInt(parts[2], 10);
+                const dateObj = new Date(year, month - 1, day);
+
+                const wochentag = days[dateObj.getDay()] + ', ';
+                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
+                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
+
+                const btn = document.createElement('a');
+                btn.href = waUrl;
+                btn.target = '_blank';
+                btn.className = 'slot-card';
+                btn.innerHTML = `<div>${wochentag}${datumStr}</div><div style="font-size: 0.9em; opacity: 0.95; font-weight: normal;">${start} - ${ende} Uhr</div>`;
+
+                // Zuordnung anhand Tag/Monat
+                if (day >= 1 && day <= 5 && month === 9) {
+                  week1Container.appendChild(btn);
+                  countWeek1++;
+                } else if (day >= 7 && day <= 12 && month === 9) {
+                  week2Container.appendChild(btn);
+                  countWeek2++;
+                }
+              }
+            }
+          }
+        });
+
+        if (countWeek1 === 0) {
+          week1Container.innerHTML = '<div style="color: #666; font-size: 0.9rem;">Keine freien Termine in diesem Zeitraum.</div>';
+        }
+        if (countWeek2 === 0) {
+          week2Container.innerHTML = '<div style="color: #666; font-size: 0.9rem;">Keine freien Termine in diesem Zeitraum.</div>';
+        }
+
+      } catch (err) {
+        document.getElementById('week-1').innerHTML = '<div style="color: #c53030; font-size: 0.9rem;">Fehler beim Laden der Termine.</div>';
+        document.getElementById('week-2').innerHTML = '<div style="color: #c53030; font-size: 0.9rem;">Fehler beim Laden der Termine.</div>';
+      }
+    }
+
+    function toggleElement(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const currentDisplay = window.getComputedStyle(el).display;
+      
+      if (currentDisplay === 'none') {
+        if (el.classList.contains('slot-group')) {
+          el.style.display = 'flex';
+        } else {
+          el.style.display = 'block';
+        }
+      } else {
+        el.style.display = 'none';
+      }
+    }
+
+    loadSlots();
+  </script>
+</body>
+</html>
