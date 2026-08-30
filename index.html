@@ -43,13 +43,15 @@
       line-height: 1.1; 
       letter-spacing: -0.5px;
     }
-    .header-logo {
-      max-width: 160px;
+    .header-hero-img {
       width: 100%;
+      max-width: 550px;
       height: auto;
-      margin: 15px auto;
+      margin: 20px auto 15px auto;
       display: block;
-      mix-blend-mode: multiply;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
     }
     header .subtitle {
       font-size: 1.2rem; 
@@ -327,7 +329,7 @@
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
     
-    <img src="logo.png" alt="Bodywork Unterhaching Logo" class="header-logo">
+    <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
     
     <div class="subtitle">Sport- und Wellnessmassagen</div>
     <div class="location-info">
@@ -516,9 +518,6 @@
         Für die Terminvereinbarung und Anfragen nutzen wir den Messenger-Dienst WhatsApp (WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland / Meta Platforms Inc.). Wenn Sie uns per WhatsApp kontaktieren, werden die von Ihnen übermittelten Daten (insbesondere Telefonnummer, Name und Chatnachrichten) verarbeitet.<br>
         Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/Erfüllung) sowie unser berechtigtes Interesse an einer effizienten Kommunikation (Art. 6 Abs. 1 lit. f DSGVO). Es kann nicht ausgeschlossen werden, dass Daten an Muttergesellschaften von WhatsApp in den USA übertragen werden. Die Nutzung erfolgt freiwillig. Sie können die Kommunikation über WhatsApp jederzeit ablehnen oder die Löschung verlangen.</p>
 
-        <p><strong>Einbindung von Google Maps:</strong><br>
-        Auf dieser Website nutzen wir den Kartendienst Google Maps (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) zur Darstellung von Standortinformationen. Bei der Nutzung werden Informationen wie IP-Adresse und Standortdaten an Server von Google (auch in die USA) übertragen. Rechtsgrundlage ist unser berechtigtes Interesse an einer leichten Auffindbarkeit des Standorts (Art. 6 Abs. 1 lit. f DSGVO) bzw. Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
-
         <p><strong>Cookies:</strong><br>
         Unsere Website verwendet ausschließlich technisch notwendige Funktionen zum Betrieb der Seite. Es werden keine Marketing- oder Analyse-Cookies eingesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
 
@@ -670,7 +669,6 @@
           slotGroup.id = weekId;
           slotGroup.className = 'slot-group';
 
-          // Sortierung der Tage innerhalb der Woche
           const sortedDays = Array.from(week.daysMap.values());
 
           sortedDays.forEach(dayData => {
