@@ -432,7 +432,7 @@
       <p>Schön, dass du den Weg zu mir gefunden hast.</p>
       <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
       <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
-      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
+      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand des Körpers – nicht an starren Abläufen.</p>
       <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
       <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
       <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
@@ -571,7 +571,11 @@
     }
 
     async function loadSlots() {
-      const container = document.getElementById('dynamic-weeks-container');
+      let container = document.getElementById('dynamic-weeks-container');
+      if (!container) {
+        return; // Verhindert jegliche Abstürze, falls das Element nicht da ist
+      }
+
       try {
         const response = await fetch(csvUrl);
         const data = await response.text();
