@@ -155,6 +155,15 @@
       margin-top: 15px; 
       text-align: left; 
     }
+
+    /* Container für Rechtliches-Buttons flexibel gelayoutet */
+    .legal-btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
     button.legal-btn {
       background: #e5e3dc; 
       border: 1px solid #d0cecf; 
@@ -164,10 +173,12 @@
       font-weight: bold; 
       color: var(--primary);
       display: inline-block;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      flex: 1 1 auto;
+      text-align: center;
     }
 
-    /* Aufklappbarer Wochen-Button im gleichen Grünton */
+    /* Aufklappbarer Wochen-Button */
     button.week-toggle-btn {
       background-color: var(--accent);
       color: #ffffff;
@@ -182,7 +193,7 @@
       margin: 8px auto;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      transition: background-color 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -239,9 +250,8 @@
       width: 100%;
     }
 
-    /* Termin-Kachel */
     .slot-card {
-      background-color: #3b5f56; /* leicht abgestufter Grünton zur besseren Abhebung vom Wochen-Button */
+      background-color: #3b5f56;
       color: #ffffff;
       text-decoration: none;
       padding: 12px 20px;
@@ -276,6 +286,9 @@
       }
       .voucher-title {
         font-size: 0.9rem;
+      }
+      button.legal-btn {
+        width: 100%;
       }
     }
   </style>
@@ -340,22 +353,12 @@
           <h3>Rücken- und Nackenmassage</h3>
           <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
-          <div style="text-align: center;">
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20R%C3%BCcken-%20und%20Nackenmassage%20anfragen." target="_blank">
-              💬 Rücken- & Nackenmassage via WhatsApp
-            </a>
-          </div>
         </div>
 
         <div class="price-item">
           <h3>Wellnessmassage</h3>
           <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
           <p><strong>60 Minuten:</strong> 55 €</p>
-          <div style="text-align: center;">
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20eine%20Wellnessmassage%20%2860%20Min.%29%20anfragen." target="_blank">
-              💬 Wellnessmassage (60 Min.) via WhatsApp
-            </a>
-          </div>
         </div>
 
         <div class="price-item">
@@ -424,8 +427,10 @@
     <!-- RECHTLICHES -->
     <section id="rechtliches">
       <h2>Rechtliches</h2>
-      <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
-      <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
+      <div class="legal-btn-group">
+        <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
+        <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
+      </div>
 
       <div id="imp-text" class="legal-content">
         <h3>Impressum</h3>
@@ -532,14 +537,12 @@
 
     const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 
-    // Hilfsfunktion: Formatierung zu DD.MM.
     function formatShortDate(dateObj) {
       const d = String(dateObj.getDate()).padStart(2, '0');
       const m = String(dateObj.getMonth() + 1).padStart(2, '0');
       return `${d}.${m}.`;
     }
 
-    // Hilfsfunktion: Errechnet Montag und Samstag der Kalenderwoche
     function getWeekRange(dateObj) {
       const d = new Date(dateObj);
       const day = d.getDay();
@@ -614,19 +617,16 @@
           return;
         }
 
-        // Wochen chronologisch sortieren
         const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
 
         sortedWeeks.forEach((week, index) => {
           const weekId = `week-group-${index}`;
 
-          // Button
           const btn = document.createElement('button');
           btn.className = 'week-toggle-btn';
           btn.innerHTML = `<span>${week.info.label}</span>`;
           btn.onclick = () => toggleWeek(weekId, btn);
 
-          // Container für Slot-Kacheln
           const slotGroup = document.createElement('div');
           slotGroup.id = weekId;
           slotGroup.className = 'slot-group';
