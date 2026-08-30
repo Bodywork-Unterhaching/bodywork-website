@@ -99,17 +99,15 @@
 
         sortedWeeks.forEach((week, index) => {
           const weekId = `week-group-${index}`;
-          const isFirst = (index === 0); // Prüfen, ob es die erste Woche ist
+          const isFirst = (index === 0);
 
           const btn = document.createElement('button');
-          // Wenn erste Woche, direkt die Klasse 'active' für den Pfeil setzen
           btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
           btn.innerHTML = `<span>${week.info.label}</span>`;
           btn.onclick = () => toggleWeek(weekId, btn);
 
           const slotGroup = document.createElement('div');
           slotGroup.id = weekId;
-          // Wenn erste Woche, direkt 'display: flex' statt 'none' damit sie offen ist
           slotGroup.className = 'slot-group';
           if (isFirst) {
             slotGroup.style.display = 'flex';
