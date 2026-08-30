@@ -8,6 +8,7 @@
     :root {
       --primary: #1a1a1a;
       --accent: #2e4d46;
+      --accent-hover: #243f39;
       --bg: #f5f4ef;
       --card-bg: #ededec;
       --text: #1a1a1a;
@@ -177,36 +178,91 @@
       text-align: center;
     }
 
-    /* Aufklappbarer Wochen-Button (Dunkelgrün) */
+    /* Wochen-Akkordeon-Button */
     button.week-toggle-btn {
-      background-color: var(--accent);
-      color: #ffffff;
-      border: none;
-      padding: 14px 20px;
+      background-color: #e5e3dc;
+      color: var(--primary);
+      border: 1px solid #d0cecf;
+      padding: 12px 18px;
       border-radius: 8px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       width: 100%;
-      max-width: 450px;
+      max-width: 500px;
       margin: 8px auto;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: background-color 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     button.week-toggle-btn:hover {
-      background-color: #243f39;
+      background-color: #dcdad3;
     }
     button.week-toggle-btn::after {
       content: '▼';
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       margin-left: 10px;
     }
     button.week-toggle-btn.active::after {
       content: '▲';
+    }
+
+    /* Aufgeklappter Wochenbereich */
+    .slot-group {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* Tages-Block & Raster */
+    .day-block {
+      width: 100%;
+      background: #ffffff;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      text-align: center;
+    }
+    .day-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-transform: capitalize;
+    }
+    .time-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* Aktiver Zeit-Button */
+    .time-badge {
+      background-color: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-block;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      flex: 1 1 calc(50% - 10px);
+      max-width: 200px;
+      text-align: center;
+    }
+    .time-badge:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-1px);
     }
 
     .voucher-list {
@@ -239,38 +295,6 @@
       text-align: right;
     }
 
-    .slot-group {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      width: 100%;
-    }
-
-    /* Aufgeklappte Termin-Kacheln: Hellgrau und kompakter */
-    .slot-card {
-      background-color: #e5e3dc;
-      border: 1px solid #d0cecf;
-      color: var(--primary);
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      width: 92%;
-      max-width: 410px;
-      box-sizing: border-box;
-      display: block;
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      transition: background-color 0.2s ease;
-    }
-    .slot-card:hover {
-      background-color: #dcdad3;
-    }
-
     @media (max-width: 480px) {
       nav {
         gap: 8px 14px;
@@ -290,6 +314,10 @@
       }
       button.legal-btn {
         width: 100%;
+      }
+      .time-badge {
+        flex: 1 1 100%;
+        max-width: 100%;
       }
     }
   </style>
@@ -557,7 +585,7 @@
         key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
         mondayObj: monday,
         saturdayObj: saturday,
-        label: `Termine von Montag, den ${formatShortDate(monday)} bis Samstag, den ${formatShortDate(saturday)}`
+        label: `Woche vom ${formatShortDate(monday)} bis ${formatShortDate(saturday)}`
       };
     }
 
@@ -591,17 +619,27 @@
                 if (!weeksMap.has(weekInfo.key)) {
                   weeksMap.set(weekInfo.key, {
                     info: weekInfo,
+                    daysMap: new Map()
+                  });
+                }
+
+                const weekEntry = weeksMap.get(weekInfo.key);
+                const dayKey = datumStr;
+
+                if (!weekEntry.daysMap.has(dayKey)) {
+                  const wochentag = days[dateObj.getDay()];
+                  weekEntry.daysMap.set(dayKey, {
+                    wochentag,
+                    datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
+                    datumFull: datumStr,
                     slots: []
                   });
                 }
 
-                const wochentag = days[dateObj.getDay()];
-                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${wochentag}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
+                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
                 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
-                weeksMap.get(weekInfo.key).slots.push({
-                  wochentag,
-                  datumStr,
+                weekEntry.daysMap.get(dayKey).slots.push({
                   start,
                   ende,
                   waUrl
@@ -632,13 +670,32 @@
           slotGroup.id = weekId;
           slotGroup.className = 'slot-group';
 
-          week.slots.forEach(slot => {
-            const card = document.createElement('a');
-            card.href = slot.waUrl;
-            card.target = '_blank';
-            card.className = 'slot-card';
-            card.innerHTML = `<div>${slot.wochentag}, ${slot.datumStr}</div><div style="font-size: 0.85em; opacity: 0.85; font-weight: normal; margin-top: 2px;">${slot.start} - ${slot.ende} Uhr</div>`;
-            slotGroup.appendChild(card);
+          // Sortierung der Tage innerhalb der Woche
+          const sortedDays = Array.from(week.daysMap.values());
+
+          sortedDays.forEach(dayData => {
+            const dayBlock = document.createElement('div');
+            dayBlock.className = 'day-block';
+
+            const dayTitle = document.createElement('div');
+            dayTitle.className = 'day-title';
+            dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
+            dayBlock.appendChild(dayTitle);
+
+            const timeGrid = document.createElement('div');
+            timeGrid.className = 'time-grid';
+
+            dayData.slots.forEach(slot => {
+              const badge = document.createElement('a');
+              badge.href = slot.waUrl;
+              badge.target = '_blank';
+              badge.className = 'time-badge';
+              badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
+              timeGrid.appendChild(badge);
+            });
+
+            dayBlock.appendChild(timeGrid);
+            slotGroup.appendChild(dayBlock);
           });
 
           container.appendChild(btn);
