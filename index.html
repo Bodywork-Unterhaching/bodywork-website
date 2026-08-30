@@ -57,7 +57,7 @@
       font-size: 1.2rem; 
       margin-top: 8px; 
       margin-bottom: 20px; 
-      font-weight: 500; 
+      font-weight: bold; 
       color: var(--primary);
     }
     header .location-info {
@@ -329,9 +329,10 @@
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
     
+    <div class="subtitle">Sport- und Wellnessmassagen</div>
+    
     <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
     
-    <div class="subtitle">Sport- und Wellnessmassagen</div>
     <div class="location-info">
       Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt. Der genaue Standort folgt nach der Buchung.
     </div>
@@ -683,6 +684,7 @@
             const timeGrid = document.createElement('div');
             timeGrid.className = 'time-grid';
 
+            dayData.slots.style = '';
             dayData.slots.forEach(slot => {
               const badge = document.createElement('a');
               badge.href = slot.waUrl;
@@ -693,6 +695,7 @@
             });
 
             dayBlock.appendChild(timeGrid);
+            slotGroup.slotGroup = '';
             slotGroup.appendChild(dayBlock);
           });
 
