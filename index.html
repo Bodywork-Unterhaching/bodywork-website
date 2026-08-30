@@ -156,7 +156,6 @@
       text-align: left; 
     }
 
-    /* Container für Rechtliches-Buttons flexibel gelayoutet */
     .legal-btn-group {
       display: flex;
       gap: 10px;
@@ -178,7 +177,7 @@
       text-align: center;
     }
 
-    /* Aufklappbarer Wochen-Button */
+    /* Aufklappbarer Wochen-Button (Dunkelgrün) */
     button.week-toggle-btn {
       background-color: var(--accent);
       color: #ffffff;
@@ -243,31 +242,33 @@
     .slot-group {
       display: none;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
       margin-top: 10px;
       margin-bottom: 15px;
       width: 100%;
     }
 
+    /* Aufgeklappte Termin-Kacheln: Hellgrau und kompakter */
     .slot-card {
-      background-color: #3b5f56;
-      color: #ffffff;
+      background-color: #e5e3dc;
+      border: 1px solid #d0cecf;
+      color: var(--primary);
       text-decoration: none;
-      padding: 12px 20px;
+      padding: 10px 16px;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 420px;
+      font-size: 0.9rem;
+      width: 92%;
+      max-width: 410px;
       box-sizing: border-box;
       display: block;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       transition: background-color 0.2s ease;
     }
     .slot-card:hover {
-      background-color: var(--accent);
+      background-color: #dcdad3;
     }
 
     @media (max-width: 480px) {
@@ -636,7 +637,7 @@
             card.href = slot.waUrl;
             card.target = '_blank';
             card.className = 'slot-card';
-            card.innerHTML = `<div>${slot.wochentag}, ${slot.datumStr}</div><div style="font-size: 0.9em; opacity: 0.95; font-weight: normal; margin-top: 2px;">${slot.start} - ${slot.ende} Uhr</div>`;
+            card.innerHTML = `<div>${slot.wochentag}, ${slot.datumStr}</div><div style="font-size: 0.85em; opacity: 0.85; font-weight: normal; margin-top: 2px;">${slot.start} - ${slot.ende} Uhr</div>`;
             slotGroup.appendChild(card);
           });
 
