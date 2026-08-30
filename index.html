@@ -155,7 +155,7 @@
       margin-top: 15px; 
       text-align: left; 
     }
-    button.legal-btn, button.toggle-btn {
+    button.legal-btn {
       background: #e5e3dc; 
       border: 1px solid #d0cecf; 
       padding: 12px 16px;
@@ -166,11 +166,37 @@
       display: inline-block;
       font-size: 0.95rem;
     }
-    button.toggle-btn {
+
+    /* Aufklappbarer Wochen-Button im gleichen Grünton */
+    button.week-toggle-btn {
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
       width: 100%;
       max-width: 450px;
-      margin: 6px auto;
+      margin: 8px auto;
       text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button.week-toggle-btn:hover {
+      background-color: #243f39;
+    }
+    button.week-toggle-btn::after {
+      content: '▼';
+      font-size: 0.85rem;
+      margin-left: 10px;
+    }
+    button.week-toggle-btn.active::after {
+      content: '▲';
     }
 
     .voucher-list {
@@ -208,25 +234,30 @@
       flex-direction: column;
       gap: 12px;
       align-items: center;
-      margin-top: 12px;
-      margin-bottom: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
       width: 100%;
     }
 
+    /* Termin-Kachel */
     .slot-card {
-      background-color: var(--accent);
+      background-color: #3b5f56; /* leicht abgestufter Grünton zur besseren Abhebung vom Wochen-Button */
       color: #ffffff;
       text-decoration: none;
-      padding: 14px 20px;
+      padding: 12px 20px;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 1.05rem;
+      font-size: 1rem;
       width: 100%;
-      max-width: 380px;
+      max-width: 420px;
       box-sizing: border-box;
       display: block;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      transition: background-color 0.2s ease;
+    }
+    .slot-card:hover {
+      background-color: var(--accent);
     }
 
     @media (max-width: 480px) {
@@ -291,24 +322,11 @@
           <span style="text-decoration: line-through; font-weight: bold; color: #000;">statt 59 €</span>
         </div>
 
-        <!-- Aufklappbare Termin-Blöcke -->
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          
-          <button class="toggle-btn" onclick="toggleElement('week-1')">
-            Termine von Montag, den 01.09. bis Samstag, den 05.09.
-          </button>
-          <div id="week-1" class="slot-group">
-            <div style="color: #666; font-size: 0.9rem;">Termine werden geladen...</div>
-          </div>
-
-          <button class="toggle-btn" onclick="toggleElement('week-2')">
-            Termine von Montag, den 07.09. bis Samstag, den 12.09.
-          </button>
-          <div id="week-2" class="slot-group">
-            <div style="color: #666; font-size: 0.9rem;">Termine werden geladen...</div>
-          </div>
-
+        <!-- Dynamisch erzeugter Bereich für die Termine aus Google Sheets -->
+        <div id="dynamic-weeks-container" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+          <div style="color: #666; font-size: 0.95rem;">Termine werden geladen...</div>
         </div>
+
       </div>
     </section>
 
@@ -512,21 +530,41 @@
     const phone = '4915560764392';
     const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
 
+    const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+
+    // Hilfsfunktion: Formatierung zu DD.MM.
+    function formatShortDate(dateObj) {
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      return `${d}.${m}.`;
+    }
+
+    // Hilfsfunktion: Errechnet Montag und Samstag der Kalenderwoche
+    function getWeekRange(dateObj) {
+      const d = new Date(dateObj);
+      const day = d.getDay();
+      const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
+      
+      const monday = new Date(d.setDate(diffToMonday));
+      const saturday = new Date(monday);
+      saturday.setDate(monday.getDate() + 5);
+
+      return {
+        key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
+        mondayObj: monday,
+        saturdayObj: saturday,
+        label: `Termine von Montag, den ${formatShortDate(monday)} bis Samstag, den ${formatShortDate(saturday)}`
+      };
+    }
+
     async function loadSlots() {
+      const container = document.getElementById('dynamic-weeks-container');
       try {
         const response = await fetch(csvUrl);
         const data = await response.text();
         const rows = data.split('\n').slice(1);
-        
-        const week1Container = document.getElementById('week-1');
-        const week2Container = document.getElementById('week-2');
-        
-        week1Container.innerHTML = '';
-        week2Container.innerHTML = '';
 
-        let countWeek1 = 0;
-        let countWeek2 = 0;
-        const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+        const weeksMap = new Map();
 
         rows.forEach(row => {
           const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
@@ -544,39 +582,84 @@
                 const year = parseInt(parts[2], 10);
                 const dateObj = new Date(year, month - 1, day);
 
-                const wochentag = days[dateObj.getDay()] + ', ';
-                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${wochentag}${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
+                const weekInfo = getWeekRange(dateObj);
+
+                if (!weeksMap.has(weekInfo.key)) {
+                  weeksMap.set(weekInfo.key, {
+                    info: weekInfo,
+                    slots: []
+                  });
+                }
+
+                const wochentag = days[dateObj.getDay()];
+                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${wochentag}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
                 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
-                const btn = document.createElement('a');
-                btn.href = waUrl;
-                btn.target = '_blank';
-                btn.className = 'slot-card';
-                btn.innerHTML = `<div>${wochentag}${datumStr}</div><div style="font-size: 0.9em; opacity: 0.95; font-weight: normal;">${start} - ${ende} Uhr</div>`;
-
-                // Zuordnung anhand Tag/Monat
-                if (day >= 1 && day <= 5 && month === 9) {
-                  week1Container.appendChild(btn);
-                  countWeek1++;
-                } else if (day >= 7 && day <= 12 && month === 9) {
-                  week2Container.appendChild(btn);
-                  countWeek2++;
-                }
+                weeksMap.get(weekInfo.key).slots.push({
+                  wochentag,
+                  datumStr,
+                  start,
+                  ende,
+                  waUrl
+                });
               }
             }
           }
         });
 
-        if (countWeek1 === 0) {
-          week1Container.innerHTML = '<div style="color: #666; font-size: 0.9rem;">Keine freien Termine in diesem Zeitraum.</div>';
-        }
-        if (countWeek2 === 0) {
-          week2Container.innerHTML = '<div style="color: #666; font-size: 0.9rem;">Keine freien Termine in diesem Zeitraum.</div>';
+        container.innerHTML = '';
+
+        if (weeksMap.size === 0) {
+          container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
+          return;
         }
 
+        // Wochen chronologisch sortieren
+        const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
+
+        sortedWeeks.forEach((week, index) => {
+          const weekId = `week-group-${index}`;
+
+          // Button
+          const btn = document.createElement('button');
+          btn.className = 'week-toggle-btn';
+          btn.innerHTML = `<span>${week.info.label}</span>`;
+          btn.onclick = () => toggleWeek(weekId, btn);
+
+          // Container für Slot-Kacheln
+          const slotGroup = document.createElement('div');
+          slotGroup.id = weekId;
+          slotGroup.className = 'slot-group';
+
+          week.slots.forEach(slot => {
+            const card = document.createElement('a');
+            card.href = slot.waUrl;
+            card.target = '_blank';
+            card.className = 'slot-card';
+            card.innerHTML = `<div>${slot.wochentag}, ${slot.datumStr}</div><div style="font-size: 0.9em; opacity: 0.95; font-weight: normal; margin-top: 2px;">${slot.start} - ${slot.ende} Uhr</div>`;
+            slotGroup.appendChild(card);
+          });
+
+          container.appendChild(btn);
+          container.appendChild(slotGroup);
+        });
+
       } catch (err) {
-        document.getElementById('week-1').innerHTML = '<div style="color: #c53030; font-size: 0.9rem;">Fehler beim Laden der Termine.</div>';
-        document.getElementById('week-2').innerHTML = '<div style="color: #c53030; font-size: 0.9rem;">Fehler beim Laden der Termine.</div>';
+        container.innerHTML = '<div style="color: #c53030; font-size: 0.95rem;">Fehler beim Laden der Termine.</div>';
+      }
+    }
+
+    function toggleWeek(id, btnElement) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      
+      const isHidden = window.getComputedStyle(el).display === 'none';
+      if (isHidden) {
+        el.style.display = 'flex';
+        btnElement.classList.add('active');
+      } else {
+        el.style.display = 'none';
+        btnElement.classList.remove('active');
       }
     }
 
@@ -584,16 +667,7 @@
       const el = document.getElementById(id);
       if (!el) return;
       const currentDisplay = window.getComputedStyle(el).display;
-      
-      if (currentDisplay === 'none') {
-        if (el.classList.contains('slot-group')) {
-          el.style.display = 'flex';
-        } else {
-          el.style.display = 'block';
-        }
-      } else {
-        el.style.display = 'none';
-      }
+      el.style.display = currentDisplay === 'none' ? 'block' : 'none';
     }
 
     loadSlots();
