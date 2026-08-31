@@ -135,7 +135,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
 
-    /* Hauptaktion / Primär-Button (Auffällig, Dunkelgrün) */
+    /* Hauptaktion / Primär-Button */
     .slot-btn {
       display: inline-block;
       width: 100%;
@@ -157,7 +157,7 @@
       background-color: var(--accent-hover);
     }
 
-    /* Sekundäraktionen (Dezente, helle Buttons für Anfragen & Telefon) */
+    /* Sekundäraktionen */
     .secondary-btn {
       display: inline-block;
       width: 100%;
@@ -271,53 +271,26 @@
       gap: 10px;
       justify-content: center;
     }
-    
-    /* Buchungsoptionen für Termine (WhatsApp vs Email) */
-    .slot-actions {
-      display: flex;
-      gap: 6px;
-      flex: 1 1 calc(50% - 10px);
-      max-width: 200px;
-    }
     .time-badge {
       background-color: var(--accent);
       color: #ffffff;
       text-decoration: none;
-      padding: 10px 10px;
-      border-radius: 6px 0 0 6px;
+      padding: 10px 16px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 0.9rem;
+      display: inline-block;
       transition: background-color 0.2s ease, transform 0.1s ease;
       box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      flex: 1;
+      flex: 1 1 calc(50% - 10px);
+      max-width: 200px;
       text-align: center;
     }
     .time-badge:hover {
       background-color: var(--accent-hover);
+      transform: translateY(-1px);
     }
-    .time-badge-mail {
-      background-color: #3a5a52;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px 8px;
-      border-radius: 0 6px 6px 0;
-      font-weight: 700;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      width: 36px;
-      text-align: center;
-    }
-    .time-badge-mail:hover {
-      background-color: var(--accent-hover);
-    }
-
+    
     .voucher-list {
       list-style: none;
       padding: 0;
@@ -367,7 +340,7 @@
       button.legal-btn {
         width: 100%;
       }
-      .slot-actions {
+      .time-badge {
         flex: 1 1 100%;
         max-width: 100%;
       }
@@ -395,6 +368,7 @@
 
   <div class="container">
     
+    <!-- TERMIN BUCHUNG -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
         <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
@@ -420,6 +394,7 @@
       </div>
     </section>
 
+    <!-- WEITERE MASSAGEN -->
     <section id="weitere-massagen">
       <h2>Weitere Massagen</h2>
       <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp, E-Mail oder telefonisch anfragen:</p>
@@ -455,6 +430,7 @@
       </div>
     </section>
 
+    <!-- GUTSCHEINE -->
     <section id="gutscheine">
       <h2>Gutscheine</h2>
       <p>Schreib mir einfach per WhatsApp, E-Mail oder ruf mich an, welchen Gutschein du verschenken möchtest:</p>
@@ -494,6 +470,7 @@
       </div>
     </section>
 
+    <!-- ÜBER MICH -->
     <section id="ueber-mich">
       <h2>Über mich</h2>
       <div class="profile-container">
@@ -510,6 +487,7 @@
       </p>
     </section>
 
+    <!-- RECHTLICHES -->
     <section id="rechtliches">
       <h2>Rechtliches</h2>
       <div class="legal-btn-group">
@@ -612,7 +590,6 @@
   <script>
     const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
     const phone = '4915560764392';
-    const emailAddress = 'Massage@bodywork-unterhaching.de';
     const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
 
     const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
@@ -694,15 +671,10 @@
                 const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
                 const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
-                const mailSubject = `Terminbuchung Sportmassage: ${days[dateObj.getDay()]}, ${datumStr} (${start} - ${ende} Uhr)`;
-                const mailBody = `Hallo Rüdiger,\n\nich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\n\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\n\nBitte sende mir eine kurze Bestätigung.\n\nViele Grüße`;
-                const mailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-
                 weekEntry.daysMap.get(dayKey).slots.push({
                   start,
                   ende,
-                  waUrl,
-                  mailUrl
+                  waUrl
                 });
               }
             }
@@ -749,26 +721,12 @@
             timeGrid.className = 'time-grid';
 
             dayData.slots.forEach(slot => {
-              const actionWrapper = document.createElement('div');
-              actionWrapper.className = 'slot-actions';
-
               const badge = document.createElement('a');
               badge.href = slot.waUrl;
               badge.target = '_blank';
               badge.className = 'time-badge';
-              badge.textContent = `${slot.start} – ${slot.ende}`;
-              badge.title = 'Termin via WhatsApp buchen';
-
-              const mailBadge = document.createElement('a');
-              mailBadge.href = slot.mailUrl;
-              mailBadge.target = '_blank';
-              mailBadge.className = 'time-badge-mail';
-              mailBadge.textContent = '✉️';
-              mailBadge.title = 'Termin via E-Mail buchen';
-
-              actionWrapper.appendChild(badge);
-              actionWrapper.appendChild(mailBadge);
-              timeGrid.appendChild(actionWrapper);
+              badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
+              timeGrid.appendChild(badge);
             });
 
             dayBlock.appendChild(timeGrid);
