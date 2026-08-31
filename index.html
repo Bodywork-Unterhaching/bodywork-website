@@ -75,12 +75,18 @@
       display: flex; 
       justify-content: center;
       align-items: center;
-      gap: 12px 18px; 
-      padding: 12px 15px; 
+      gap: 8px 16px; 
+      padding: 10px 15px; 
       position: sticky; 
       top: 0; 
       z-index: 100; 
       flex-wrap: wrap;
+    }
+    .nav-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
     }
     nav a { 
       color: white; 
@@ -100,7 +106,7 @@
       padding: 22px 18px; 
       margin-bottom: 20px; 
       box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      scroll-margin-top: 70px;
+      scroll-margin-top: 90px;
     }
     h2 { 
       color: var(--primary); 
@@ -322,8 +328,11 @@
     }
     @media (max-width: 480px) {
       nav {
-        gap: 8px 14px;
-        padding: 10px;
+        gap: 6px;
+        padding: 8px 10px;
+      }
+      .nav-row {
+        gap: 12px;
       }
       nav a {
         font-size: 0.85rem;
@@ -359,16 +368,19 @@
   </header>
 
   <nav>
-    <a href="#termine">Termine</a>
-    <a href="#weitere-massagen">Weitere Massagen</a>
-    <a href="#gutscheine">Gutscheine</a>
-    <a href="#ueber-mich">Über mich</a>
-    <a href="#rechtliches">Rechtliches</a>
+    <div class="nav-row">
+      <a href="#termine">Termine</a>
+      <a href="#weitere-massagen">Weitere Massagen</a>
+      <a href="#gutscheine">Gutscheine</a>
+    </div>
+    <div class="nav-row">
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#rechtliches">Rechtliches</a>
+    </div>
   </nav>
 
   <div class="container">
     
-    <!-- TERMIN BUCHUNG -->
     <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
       <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
         <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
@@ -394,7 +406,6 @@
       </div>
     </section>
 
-    <!-- WEITERE MASSAGEN -->
     <section id="weitere-massagen">
       <h2>Weitere Massagen</h2>
       <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp, E-Mail oder telefonisch anfragen:</p>
@@ -430,7 +441,6 @@
       </div>
     </section>
 
-    <!-- GUTSCHEINE -->
     <section id="gutscheine">
       <h2>Gutscheine</h2>
       <p>Schreib mir einfach per WhatsApp, E-Mail oder ruf mich an, welchen Gutschein du verschenken möchtest:</p>
@@ -470,7 +480,6 @@
       </div>
     </section>
 
-    <!-- ÜBER MICH -->
     <section id="ueber-mich">
       <h2>Über mich</h2>
       <div class="profile-container">
@@ -487,7 +496,6 @@
       </p>
     </section>
 
-    <!-- RECHTLICHES -->
     <section id="rechtliches">
       <h2>Rechtliches</h2>
       <div class="legal-btn-group">
@@ -555,215 +563,4 @@
         <p><strong>Dauer der Speicherung:</strong><br>
         Personenbezogene Daten werden nur so lange gespeichert, wie dies zur Erfüllung der genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
 
-        <p><strong>Betroffenenrechte:</strong><br>
-        Sie haben folgende Rechte:</p>
-        <ul>
-          <li>Auskunft über Ihre gespeicherten Daten</li>
-          <li>Berichtigung unrichtiger Daten</li>
-          <li>Löschung Ihrer Daten</li>
-          <li>Einschränkung der Verarbeitung</li>
-          <li>Datenübertragbarkeit</li>
-          <li>Widerspruch gegen die Verarbeitung</li>
-          <li>Widerruf erteilter Einwilligungen</li>
-        </ul>
-
-        <p>Zur Ausübung Ihrer Rechte können Sie sich jederzeit an uns wenden:<br>
-        E-Mail: Massage@bodywork-unterhaching.de<br>
-        Telefon: +49 155 60764392</p>
-
-        <p><strong>Beschwerderecht:</strong><br>
-        Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.<br>
-        Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht<br>
-        Waldtruderingstraße 101, 81675 München<br>
-        Telefon: 089 21267 0, E-Mail: poststelle@bayern.de</p>
-
-        <p>© 2026 Bodywork Unterhaching</p>
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
-  </footer>
-
-  <script>
-    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
-    const phone = '4915560764392';
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
-
-    const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-
-    function formatShortDate(dateObj) {
-      const d = String(dateObj.getDate()).padStart(2, '0');
-      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
-      return `${d}.${m}.`;
-    }
-
-    function getWeekRange(dateObj) {
-      const d = new Date(dateObj);
-      const day = d.getDay();
-      const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
-      
-      const monday = new Date(d.setDate(diffToMonday));
-      const saturday = new Date(monday);
-      saturday.setDate(monday.getDate() + 5);
-
-      return {
-        key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
-        mondayObj: monday,
-        saturdayObj: saturday,
-        label: `Woche vom ${formatShortDate(monday)} bis ${formatShortDate(saturday)}`
-      };
-    }
-
-    async function loadSlots() {
-      let container = document.getElementById('dynamic-weeks-container');
-      if (!container) {
-        return;
-      }
-
-      try {
-        const response = await fetch(csvUrl);
-        const data = await response.text();
-        const rows = data.split('\n').slice(1);
-
-        const weeksMap = new Map();
-
-        rows.forEach(row => {
-          const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
-          if (cols.length >= 4) {
-            const datumStr = cols[0];
-            const start = cols[1];
-            const ende = cols[2];
-            const status = cols[3].toLowerCase();
-
-            if (status === 'frei') {
-              const parts = datumStr.split('.');
-              if (parts.length === 3) {
-                const day = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10);
-                const year = parseInt(parts[2], 10);
-                const dateObj = new Date(year, month - 1, day);
-
-                const weekInfo = getWeekRange(dateObj);
-
-                if (!weeksMap.has(weekInfo.key)) {
-                  weeksMap.set(weekInfo.key, {
-                    info: weekInfo,
-                    daysMap: new Map()
-                  });
-                }
-
-                const weekEntry = weeksMap.get(weekInfo.key);
-                const dayKey = datumStr;
-
-                if (!weekEntry.daysMap.has(dayKey)) {
-                  const wochentag = days[dateObj.getDay()];
-                  weekEntry.daysMap.set(dayKey, {
-                    wochentag,
-                    datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
-                    datumFull: datumStr,
-                    slots: []
-                  });
-                }
-
-                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
-
-                weekEntry.daysMap.get(dayKey).slots.push({
-                  start,
-                  ende,
-                  waUrl
-                });
-              }
-            }
-          }
-        });
-
-        container.innerHTML = '';
-
-        if (weeksMap.size === 0) {
-          container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
-          return;
-        }
-
-        const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
-
-        sortedWeeks.forEach((week, index) => {
-          const weekId = `week-group-${index}`;
-          const isFirst = (index === 0);
-
-          const btn = document.createElement('button');
-          btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
-          btn.innerHTML = `<span>${week.info.label}</span>`;
-          btn.onclick = () => toggleWeek(weekId, btn);
-
-          const slotGroup = document.createElement('div');
-          slotGroup.id = weekId;
-          slotGroup.className = 'slot-group';
-          if (isFirst) {
-            slotGroup.style.display = 'flex';
-          }
-
-          const sortedDays = Array.from(week.daysMap.values());
-
-          sortedDays.forEach(dayData => {
-            const dayBlock = document.createElement('div');
-            dayBlock.className = 'day-block';
-
-            const dayTitle = document.createElement('div');
-            dayTitle.className = 'day-title';
-            dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
-            dayBlock.appendChild(dayTitle);
-
-            const timeGrid = document.createElement('div');
-            timeGrid.className = 'time-grid';
-
-            dayData.slots.forEach(slot => {
-              const badge = document.createElement('a');
-              badge.href = slot.waUrl;
-              badge.target = '_blank';
-              badge.className = 'time-badge';
-              badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
-              timeGrid.appendChild(badge);
-            });
-
-            dayBlock.appendChild(timeGrid);
-            slotGroup.appendChild(dayBlock);
-          });
-
-          container.appendChild(btn);
-          container.appendChild(slotGroup);
-        });
-
-      } catch (err) {
-        container.innerHTML = '<div style="color: #c53030; font-size: 0.95rem;">Fehler beim Laden der Termine.</div>';
-      }
-    }
-
-    function toggleWeek(id, btnElement) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      
-      const isHidden = window.getComputedStyle(el).display === 'none';
-      if (isHidden) {
-        el.style.display = 'flex';
-        btnElement.classList.add('active');
-      } else {
-        el.style.display = 'none';
-        btnElement.classList.remove('active');
-      }
-    }
-
-    function toggleElement(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const currentDisplay = window.getComputedStyle(el).display;
-      el.style.display = currentDisplay === 'none' ? 'block' : 'none';
-    }
-
-    loadSlots();
-  </script>
-</body>
-</html>
+        <p><strong>Betroffenenrechte
