@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termine – Bodywork Unterhaching</title>
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --accent: #2e4d46;
+      --accent-hover: #243f39;
+      --bg: #f5f4ef;
+      --card-bg: #ededec;
+      --text: #1a1a1a;
+      --subtext: #4a4a4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
+    }
+    header {
+      background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
+    }
+    header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; }
+    nav {
+      background: var(--accent); display: flex; justify-content: center; align-items: center;
+      gap: 10px 14px; padding: 12px 15px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+    }
+    nav a { color: white; text-decoration: none; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+    .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
+    section { background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    button.week-toggle-btn {
+      background-color: #e5e3dc; color: var(--primary); border: 1px solid #d0cecf;
+      padding: 12px 18px; border-radius: 8px; cursor: pointer; font-weight: 700;
+      font-size: 0.95rem; width: 100%; max-width: 500px; margin: 8px auto; text-align: center;
+      transition: background-color 0.2s ease; display: flex; justify-content: space-between; align-items: center;
+    }
+    button.week-toggle-btn:hover { background-color: #dcdad3; }
+    button.week-toggle-btn::after { content: '▼'; font-size: 0.8rem; margin-left: 10px; }
+    button.week-toggle-btn.active::after { content: '▲'; }
+    .slot-group { display: none; flex-direction: column; gap: 16px; align-items: center; margin-top: 15px; margin-bottom: 20px; width: 100%; max-width: 500px; }
+    .day-block { width: 100%; background: #ffffff; padding: 12px 15px; border-radius: 8px; border: 1px solid #e0e0e0; text-align: center; }
+    .day-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; text-transform: capitalize; }
+    .time-grid { 
+      display: grid; 
+     grid-template-columns: 1fr;
+    justify-items: center;
+      gap: 10px; 
+    }
+    .time-badge {
+      background-color: var(--accent); color: #ffffff; text-decoration: none; padding: 10px 16px;
+      border-radius: 6px; font-weight: 700; font-size: 0.9rem; display: block;
+      transition: background-color 0.2s ease, transform 0.1s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      width: 100%; max-width: 300px; text-align: center;
+    }
+    .time-badge:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+    footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bodywork<br>Unterhaching</h1>
+    <p style="font-weight: bold; margin-top: 10px;">Terminübersicht</p>
+  </header>
+
+  <nav class="nav-bar">
+    <a href="index.html">Home</a>
+    <a href="index.html#angebot">Angebot</a>
+    <a href="termine.html">Termine</a>
+    <a href="gutscheine">Gutscheine</a>
+    <a href="index.html#bewertungen">Bewertungen</a>
+    <a href="uebermich">Über mich</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#rechtliches">Rechtliches</a>
+  </nav>
+
+  <div class="container">
+    <section style="background-color: var(--card-bg); padding: 30px 20px; text-align: center;">
+      <h2 id="calendar-title" style="font-size: 1.8rem; margin: 0 0 15px 0; color: #000; border: none; padding: 0; font-weight: 800;">Freie Termine – Sportmassage, 60 Minuten</h2>
+      <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
+        Wähle direkt einen verfügbaren Termin aus der Live-Übersicht:
+      </p>
+
+      <div id="dynamic-weeks-container" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="color: #666; font-size: 0.95rem;">Termine werden geladen...</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 Bodywork Unterhaching – Rüdiger Hammer</p>
+  </footer>
+
+  <script>
+    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
+    const phone = '4915560764392';
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+    const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    let currentSelectedMassage = 'Sportmassage, 60 Minuten';
+    let rawCsvData = '';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const massageParam = urlParams.get('massage');
+    if (massageParam) {
+      currentSelectedMassage = decodeURIComponent(massageParam);
+    }
+    document.getElementById('calendar-title').textContent = `Freie Termine – ${currentSelectedMassage}`;
+
+    function toggleGroup(groupId, btn) {
+      const group = document.getElementById(groupId);
+      if (group) {
+        const isHidden = group.style.display === 'none' || group.style.display === '';
+        group.style.display = isHidden ? 'flex' : 'none';
+        btn.classList.toggle('active', isHidden);
+      }
+    }
+    function formatShortDate(dateObj) {
+      return `${String(dateObj.getDate()).padStart(2, '0')}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.`;
+    }
+    function getWeekRange(dateObj) {
+      const d = new Date(dateObj);
+      const day = d.getDay();
+      const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
+      const monday = new Date(d.setDate(diffToMonday));
+      const saturday = new Date(monday);
+      saturday.setDate(monday.getDate() + 5);
+      return {
+        key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
+        label: `Woche vom ${formatShortDate(monday)} bis ${formatShortDate(saturday)}`
+      };
+    }
+    async function loadSlots() {
+      const container = document.getElementById('dynamic-weeks-container');
+      if (!container) return;
+      try {
+        const response = await fetch(csvUrl);
+        rawCsvData = await response.text();
+        processAndRenderSlots(rawCsvData);
+      } catch (err) {
+        container.innerHTML = '<div style="color: #c53030;">Fehler beim Laden der Termine.</div>';
+      }
+    }
+    function processAndRenderSlots(csvText) {
+      const container = document.getElementById('dynamic-weeks-container');
+      if (!container) return;
+      const rows = csvText.split('\n').slice(1);
+      const weeksMap = new Map();
+
+      rows.forEach(row => {
+        const delimiter = row.includes(';') ? ';' : ',';
+        const cols = row.split(delimiter).map(c => c.replace(/"/g, '').trim());
+        if (cols.length >= 4) {
+          const datumStr = cols[0], start = cols[1], status = cols[3].toLowerCase();
+          if (status === 'frei') {
+            const parts = datumStr.split('.');
+            if (parts.length === 3) {
+              const dateObj = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
+              if (!isNaN(dateObj.getTime())) {
+                const weekInfo = getWeekRange(dateObj);
+                if (!weeksMap.has(weekInfo.key)) weeksMap.set(weekInfo.key, { label: weekInfo.label, daysMap: new Map() });
+                const weekData = weeksMap.get(weekInfo.key);
+                if (!weekData.daysMap.has(datumStr)) {
+                  weekData.daysMap.set(datumStr, { dayName: days[dateObj.getDay()], dateStr: datumStr, slots: [] });
+                }
+                weekData.daysMap.get(datumStr).slots.push(start);
+              }
+            }
+          }
+        }
+      });
+
+      if (weeksMap.size === 0) {
+        container.innerHTML = '<div style="color: #666;">Derzeit keine freien Termine verfügbar.</div>';
+        return;
+      }
+
+      let html = '', weekIndex = 0;
+      weeksMap.forEach((weekData, weekKey) => {
+        const groupId = `week-group-${weekIndex}`, isFirst = weekIndex === 0;
+        html += `<button class="week-toggle-btn ${isFirst ? 'active' : ''}" onclick="toggleGroup('${groupId}', this)">${weekData.label}</button>`;
+        html += `<div id="${groupId}" class="slot-group" style="display: ${isFirst ? 'flex' : 'none'};">`;
+        weekData.daysMap.forEach(dayData => {
+          html += `<div class="day-block"><div class="day-title">${dayData.dayName}, ${dayData.dateStr}</div><div class="time-grid">`;
+          dayData.slots.forEach(time => {
+            const msg = encodeURIComponent(`Hallo Rüdiger, ich möchte gerne folgenden Termin buchen: ${currentSelectedMassage} am ${dayData.dayName}, ${dayData.dateStr} um ${time} Uhr.`);
+            html += `<a href="https://wa.me/${phone}?text=${msg}" target="_blank" class="time-badge">${time} Uhr</a>`;
+          });
+          html += `</div></div>`;
+        });
+        html += `</div>`;
+        weekIndex++;
+      });
+      container.innerHTML = html;
+    }
+    document.addEventListener('DOMContentLoaded', loadSlots);
+  </script>
+</body>
+</html>
