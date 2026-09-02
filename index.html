@@ -9,7 +9,6 @@
       --primary: #1a1a1a;
       --accent: #2e4d46;
       --accent-hover: #243f39;
-      --call-bg: #3a5a52;
       --secondary-btn-bg: #e5e3dc;
       --secondary-btn-hover: #dcdad3;
       --bg: #f5f4ef;
@@ -17,333 +16,120 @@
       --text: #1a1a1a;
       --subtext: #4a4a4a;
     }
-    * {
-      box-sizing: border-box;
-    }
-    html { 
-      scroll-behavior: smooth; 
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0; 
-      padding: 0;
-      background-color: var(--bg); 
-      color: var(--text);
+      margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.5;
+    }
+    .section-header {
+      margin-bottom: 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--subtext);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+      border: none;
+      padding-bottom: 0;
+    }
+    .section-lead {
+      font-size: 0.95rem;
+      color: var(--subtext);
+      margin: 0;
       line-height: 1.5;
     }
     header {
-      background-color: var(--bg); 
-      color: var(--primary);
-      text-align: center; 
-      padding: 30px 20px 20px 20px;
-      max-width: 750px; 
-      margin: 0 auto;
+      background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
     }
-    header h1 {
-      margin: 0; 
-      font-size: 2.2rem; 
-      font-weight: 800; 
-      line-height: 1.1; 
-      letter-spacing: -0.5px;
+    header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; }
+    header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px; font-weight: bold; color: var(--primary); }
+    .header-hero-container {
+      position: relative; width: 100%; max-width: 550px; margin: 0 auto 15px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
     .header-hero-img {
-      width: 100%;
-      max-width: 550px;
-      height: auto;
-      margin: 20px auto 15px auto;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      object-fit: cover;
+      width: 100%; height: 380px; display: block; object-fit: cover;
     }
-    header .subtitle {
-      font-size: 1.2rem; 
-      margin-top: 8px; 
-      margin-bottom: 20px; 
-      font-weight: bold; 
-      color: var(--primary);
-    }
-    header .location-info {
-      font-size: 1rem; 
-      line-height: 1.45; 
-      color: var(--primary); 
-      max-width: 650px; 
-      margin: 0 auto;
-    }
+    header .location-info { font-size: 1rem; line-height: 1.45; color: var(--primary); max-width: 650px; margin: 0 auto; }
+    
     nav {
-      background: var(--accent); 
-      display: flex; 
+      background: var(--accent);
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 12px 18px; 
-      padding: 12px 15px; 
-      position: sticky; 
-      top: 0; 
-      z-index: 100; 
-      flex-wrap: wrap;
+      gap: 12px 20px;
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      text-align: center;
     }
-    nav a { 
-      color: white; 
-      text-decoration: none; 
-      font-weight: bold; 
-      font-size: 0.9rem; 
-      white-space: nowrap;
-    }
-    .container { 
-      max-width: 750px; 
-      margin: 0 auto; 
-      padding: 20px 15px; 
-    }
-    section {
-      background: #ffffff; 
-      border-radius: 12px;
-      padding: 22px 18px; 
-      margin-bottom: 20px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      scroll-margin-top: 70px;
-    }
-    h2 { 
-      color: var(--primary); 
-      margin-top: 0; 
-      border-bottom: 2px solid var(--bg); 
-      padding-bottom: 10px; 
-      font-size: 1.5rem; 
-    }
-    .price-list { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 20px; 
-    }
-    .price-item { 
-      border-left: 4px solid var(--accent); 
-      padding-left: 12px; 
-    }
-    .price-item h3 { 
-      margin: 0 0 5px 0; 
-      color: var(--primary); 
-    }
-    .profile-container { 
-      text-align: center; 
-      margin-bottom: 20px; 
-    }
-    .profile-img {
-      width: 160px; 
-      height: 160px; 
-      object-fit: cover;
-      border-radius: 50%; 
-      border: 4px solid var(--accent); 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    }
-
-    /* Hauptaktion / Primär-Button */
-    .slot-btn {
-      display: inline-block;
-      width: 100%;
-      max-width: 400px;
-      background-color: var(--accent);
+    nav a {
       color: white;
       text-decoration: none;
-      padding: 14px 18px;
-      border-radius: 8px;
       font-weight: bold;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      text-align: center;
-      line-height: 1.3;
-      white-space: nowrap;
-      transition: background-color 0.2s ease;
-    }
-    .slot-btn:hover {
-      background-color: var(--accent-hover);
-    }
-
-    /* Sekundäraktionen */
-    .secondary-btn {
-      display: inline-block;
-      width: 100%;
-      max-width: 400px;
-      background-color: var(--secondary-btn-bg);
-      color: var(--primary);
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 600;
       font-size: 0.85rem;
-      margin-top: 8px;
-      text-align: center;
-      line-height: 1.3;
-      white-space: nowrap;
-      border: 1px solid #d0cecf;
-      transition: background-color 0.2s ease;
-    }
-    .secondary-btn:hover {
-      background-color: var(--secondary-btn-hover);
     }
 
-    footer { 
-      text-align: center; 
-      padding: 25px 15px; 
-      font-size: 0.85rem; 
-      color: var(--subtext); 
+    .container { max-width: 750px; margin: 0 auto; padding: 20px 15px; }
+    section {
+      background: #ffffff; border-radius: 12px; padding: 22px 18px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); scroll-margin-top: 70px;
     }
-    .legal-content { 
-      display: none; 
-      font-size: 0.85rem; 
-      margin-top: 15px; 
-      text-align: left; 
+    h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-size: 1.5rem; }
+    .offerings-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .offering-card {
+      background-color: var(--card-bg); border-radius: 10px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #e0e0df; width: 100%;
     }
-    .legal-btn-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
+    .offering-card h3 { margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary); }
+    .offering-subtitle { font-size: 0.85rem; color: var(--subtext); margin-bottom: 10px; font-weight: 600; }
+    .offering-card p { font-size: 0.9rem; color: var(--subtext); margin: 0 0 15px 0; line-height: 1.4; }
+    .offering-price { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; line-height: 1.35; }
+    .price-note { display: block; font-size: 0.8rem; font-weight: 700; color: #c53030; margin-top: 4px; }
+    .slot-btn {
+      display: inline-block; width: 100%; background-color: var(--accent); color: white;
+      text-decoration: none; padding: 12px 14px; border-radius: 8px; font-weight: bold;
+      font-size: 0.85rem; text-align: center; line-height: 1.3; transition: background-color 0.2s ease;
+      cursor: pointer; border: none;
     }
+    .slot-btn:hover { background-color: var(--accent-hover); }
+    .secondary-btn {
+      display: inline-block; width: 100%; max-width: 400px; background-color: var(--secondary-btn-bg);
+      color: var(--primary); text-decoration: none; padding: 12px 18px; border-radius: 8px;
+      font-weight: 600; font-size: 0.85rem; margin-top: 8px; text-align: center; line-height: 1.3;
+      white-space: nowrap; border: 1px solid #d0cecf; transition: background-color 0.2s ease;
+    }
+    .secondary-btn:hover { background-color: var(--secondary-btn-hover); }
+    .faq-container { border: 1px solid #e0e0df; border-radius: 10px; background-color: #ffffff; overflow: hidden; margin-top: 20px; }
+    .faq-item { border-bottom: 1px solid #e0e0df; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { padding: 16px 20px; font-weight: 700; font-size: 0.95rem; color: var(--primary); cursor: pointer; list-style: none; position: relative; }
+    .faq-question::-webkit-details-marker { display: none; }
+    .faq-question::before { content: '▼'; display: inline-block; font-size: 0.7rem; margin-right: 10px; transition: transform 0.2s ease; }
+    details[open] .faq-question::before { transform: rotate(180deg); }
+    .faq-answer { padding: 0 20px 16px 36px; font-size: 0.9rem; color: var(--subtext); line-height: 1.5; }
+    footer { text-align: center; padding: 25px 15px; font-size: 0.85rem; color: var(--subtext); }
+    .legal-content { display: none; font-size: 0.85rem; margin-top: 15px; text-align: left; }
+    .legal-btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
     button.legal-btn {
-      background: #e5e3dc; 
-      border: 1px solid #d0cecf; 
-      padding: 12px 16px;
-      border-radius: 6px; 
-      cursor: pointer; 
-      font-weight: bold; 
-      color: var(--primary);
-      display: inline-block;
-      font-size: 0.9rem;
-      flex: 1 1 auto;
-      text-align: center;
-    }
-    button.week-toggle-btn {
-      background-color: #e5e3dc;
-      color: var(--primary);
-      border: 1px solid #d0cecf;
-      padding: 12px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.95rem;
-      width: 100%;
-      max-width: 500px;
-      margin: 8px auto;
-      text-align: center;
-      transition: background-color 0.2s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    button.week-toggle-btn:hover {
-      background-color: #dcdad3;
-    }
-    button.week-toggle-btn::after {
-      content: '▼';
-      font-size: 0.8rem;
-      margin-left: 10px;
-    }
-    button.week-toggle-btn.active::after {
-      content: '▲';
-    }
-    .slot-group {
-      display: none;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      margin-top: 15px;
-      margin-bottom: 20px;
-      width: 100%;
-      max-width: 500px;
-    }
-    .day-block {
-      width: 100%;
-      background: #ffffff;
-      padding: 12px 15px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      text-align: center;
-    }
-    .day-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 10px;
-      text-transform: capitalize;
-    }
-    .time-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .time-badge {
-      background-color: var(--accent);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: inline-block;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      flex: 1 1 calc(50% - 10px);
-      max-width: 200px;
-      text-align: center;
-    }
-    .time-badge:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-1px);
-    }
-    
-    .voucher-list {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-    }
-    .voucher-list li {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px dashed #e0e0e0;
-      gap: 8px;
-    }
-    .voucher-list li:last-child {
-      border-bottom: none;
-    }
-    .voucher-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      flex: 1 1 200px;
-    }
-    .voucher-price {
-      font-weight: 800;
-      font-size: 1rem;
-      white-space: nowrap;
-      color: var(--accent);
-      text-align: right;
+      background: #e5e3dc; border: 1px solid #d0cecf; padding: 12px 16px;
+      border-radius: 6px; cursor: pointer; font-weight: bold; color: var(--primary);
+      display: inline-block; font-size: 0.9rem; flex: 1 1 auto; text-align: center;
     }
     @media (max-width: 480px) {
-      nav {
-        gap: 8px 14px;
-        padding: 10px;
-      }
-      nav a {
-        font-size: 0.85rem;
-      }
-      section {
-        padding: 18px 14px;
-      }
-      .voucher-list li {
-        padding: 10px 0;
-      }
-      .voucher-title {
-        font-size: 0.9rem;
-      }
-      button.legal-btn {
-        width: 100%;
-      }
-      .time-badge {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
+      .container { padding: 12px 10px; }
+      section { padding: 18px 14px; margin-bottom: 15px; }
+      button.legal-btn { width: 100%; }
     }
   </style>
 </head>
@@ -351,233 +137,218 @@
 
   <header>
     <h1>Bodywork<br>Unterhaching</h1>
-    <div class="subtitle">Sport- und Wellnessmassagen</div>
-    <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
+    <p class="subtitle">Sport- und Wellnessmassagen</p>
+    
+    <div class="header-hero-container">
+      <img src="header-massage.jpg" alt="Sport- und Wellnessmassage" class="header-hero-img">
+    </div>
+
     <div class="location-info">
       Behandlungen finden in einer Praxis in unmittelbarer Nähe des Unterhachinger Freibads / Grünauer Allee statt.
     </div>
   </header>
 
   <nav>
-    <a href="#termine">Termine</a>
-    <a href="#weitere-massagen">Weitere Massagen</a>
+    <a href="index.html">Home</a>
+    <a href="#angebot">**AKTION**</a>
+    <a href="#bewertungen">Bewertungen</a>
     <a href="#gutscheine">Gutscheine</a>
     <a href="#ueber-mich">Über mich</a>
+    <a href="#faq">FAQ</a>
     <a href="#rechtliches">Rechtliches</a>
   </nav>
 
   <div class="container">
-    
-    <!-- TERMIN BUCHUNG -->
-    <section id="termine" style="padding: 0; background: transparent; box-shadow: none;">
-      <div style="background-color: var(--card-bg); padding: 30px 20px; border-radius: 12px; text-align: center; max-width: 100%; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-        <h2 style="font-size: 2rem; margin: 0 0 5px 0; color: #000; border: none; padding: 0; font-weight: 800;">Sportmassage</h2>
-        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 15px; color: #000;">Ganzkörperorientiert</div>
-        
-        <p style="font-size: 0.95rem; line-height: 1.5; color: #222; margin-bottom: 20px; max-width: 550px; margin-left: auto; margin-right: auto;">
-          Kräftige, dynamische Massage mit gezieltem Druck – ideal zur muskulären Lockerung und zur Unterstützung von Regeneration und körperlichem Wohlbefinden
-        </p>
-        
-        <div style="font-size: 1.15rem; font-style: italic; font-weight: bold; margin-bottom: 8px; color: #000;">
-          ! Aktion nur bis Ende Oktober 2026 !
-        </div>
-        
-        <div style="font-size: 1.2rem; margin-bottom: 25px;">
-          <span style="color: #1bb753; font-weight: bold;">60 Minuten für 55 €</span> 
-          <span style="text-decoration: line-through; font-weight: bold; color: #000;">statt 59 €</span>
-        </div>
 
-        <div id="dynamic-weeks-container" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-          <div style="color: #666; font-size: 0.95rem;">Termine werden geladen...</div>
-        </div>
-
+    <section id="angebot">
+      <div class="section-header">
+        <div class="section-eyebrow">Deine Möglichkeiten</div>
+        <h2 class="section-title">Welche Massage passt zu dir?</h2>
+        <p class="section-lead">Wähle die Behandlung, die zu deinem aktuellen Bedürfnis passt.</p>
       </div>
-    </section>
-
-    <!-- WEITERE MASSAGEN -->
-    <section id="weitere-massagen">
-      <h2>Weitere Massagen</h2>
-      <p>Gerne kannst du folgende Behandlungen direkt per WhatsApp, E-Mail oder telefonisch anfragen:</p>
-      
-      <div class="price-list">
-        <div class="price-item">
-          <h3>Rücken- und Nackenmassage</h3>
-          <p>Sanfte bis moderate Massage zur Entspannung von Körper und Geist. Unterstützt das allgemeine Wohlbefinden und schafft eine wohltuende Auszeit vom Alltag.</p>
-          <p><strong>30 Minuten:</strong> 35 €<br><strong>45 Minuten:</strong> 45 €</p>
+      <div class="offerings-grid">
+        <div class="offering-card">
+          <div>
+            <h3>Sportmassage</h3>
+            <div class="offering-subtitle">Ganzkörperorientiert</div>
+            <p>Kräftige, dynamische Massage mit gezieltem Druck – für aktive Menschen und alle, die eine intensivere Massage bevorzugen.</p>
+          </div>
+          <div>
+            <div class="offering-price">
+              60 Minuten · 55 €
+              <span class="price-note">Aktionspreis bis 31. Oktober 2026 · statt 59 €</span>
+            </div>
+            <a class="slot-btn" href="termine.html?massage=Sportmassage,%2060%20Minuten">Termin buchen</a>
+          </div>
         </div>
 
-        <div class="price-item">
-          <h3>Wellnessmassage</h3>
-          <p>Entspannung für Körper und Geist und eine wohltuende Auszeit vom Alltag.</p>
-          <p><strong>60 Minuten:</strong> 55 €</p>
+        <div class="offering-card">
+          <div>
+            <h3>Rücken- & Nackenmassage</h3>
+            <p>Sanfte bis moderate Massage für Rücken, Schultern und Nacken – passend, wenn du viel sitzt oder gezielt entspannen möchtest.</p>
+          </div>
+          <div>
+            <div class="offering-price" style="margin-bottom: 8px;">
+              45 Minuten · 45 €
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <a class="slot-btn" href="termine.html?massage=R%C3%BCcken-%20%26%20Nackenmassage,%2045%20Minuten">Termin buchen</a>
+            </div>
+          </div>
         </div>
 
-        <div class="price-item">
-          <h3>Individuelle Anfragen</h3>
-          <p>Sehr gerne biete ich dir auch Massagen in individuellen Längen an. Kontaktiere mich einfach direkt.</p>
-          <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-            <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
-              💬 Individuelle Anfrage via WhatsApp
-            </a>
-            <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Individuelle%20Anfrage%20Massage&body=Hallo%20R%C3%BCdiger,%20ich%20habe%20eine%20individuelle%20Anfrage%20zu%20einer%20Massage." target="_blank">
-              ✉️ Individuelle Anfrage per E-Mail
-            </a>
-            <a class="secondary-btn" href="tel:+4915560764392">
-              📞 Direkt anrufen (+49 155 60764392)
-            </a>
+        <div class="offering-card">
+          <div>
+            <h3>Wellnessmassage</h3>
+            <p>Ruhige, wohltuende Massage für alle, die abschalten und ihrem Körper eine bewusste Auszeit gönnen möchten.</p>
+          </div>
+          <div>
+            <div class="offering-price">60 Minuten · 55 €</div>
+            <a class="slot-btn" href="termine.html?massage=Wellnessmassage,%2060%20Minuten">Termin buchen</a>
           </div>
         </div>
       </div>
+
+    <div id="ueber-mich" style="margin-top: 35px; border-top: 2px solid var(--bg); padding-top: 25px; scroll-margin-top: 90px; text-align: center;">
+  
+  <!-- Zentrierte Überschrift -->
+  <h3 style="color: var(--primary); font-size: 1.3rem; margin-top: 0; margin-bottom: 20px;">Über mich</h3>
+
+  <!-- Zentriertes Profilbild -->
+  <div style="margin: 20px 0;">
+    <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" style="width: 240px; height: 240px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  </div>
+
+  <!-- Der gesamte Text sauber darunter, linksbündig lesbar -->
+ <div style="max-width: 550px; margin: 20px auto 0 auto; text-align: left; padding: 0 10px;">
+  <p style="font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary);">Schön, dass du hier bist.</p>
+  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
+  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
+  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+  
+  <p style="margin: 20px 0 0 0; font-size: 0.8rem; color: var(--subtext); font-style: italic; border-top: 1px solid var(--bg); padding-top: 10px;">*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</p>
+</div>
+
+</div>
+
+      </div>
     </section>
 
-    <!-- GUTSCHEINE -->
+    <section id="bewertungen">
+      <h2>Das sagen meine Kunden</h2>
+      <p style="font-size: 0.9rem; color: var(--subtext); margin-bottom: 15px;">
+        Aus Gründen des Datenschutzes und der Privatsphäre sind Kundenstimmen auf dieser Website mit abgekürzten Namen versehen. Vollständige und verifizierte Erfahrungsberichte findest du direkt in den öffentlichen Google-Bewertungen.
+      </p>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Rüdiger hat genau die richtige Mischung aus gezielter Härte und Einfühlungsvermögen. Er findet die Problemstellen sofort und behandelt sie äußerst professionell. Nach der Massage fühle ich mich deutlich lockerer und entspannter. Klare Empfehlung – ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Maximilian T.</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Ich war gestern zum ersten Mal bei Rüdiger und habe mich vom ersten Moment an sehr wohlgefühlt. [...] Für mich stimmt hier einfach das Gesamtpaket: menschlich, fachlich und professionell. Eine klare Empfehlung für alle, die Wert auf eine hochwertige Behandlung legen. Ich komme gerne wieder!“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– Stefanie H.</p>
+      </div>
+
+      <div style="background-color: var(--card-bg); padding: 16px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--accent);">
+        <div style="color: #f59e0b; font-size: 1rem; margin-bottom: 6px;">★★★★★</div>
+        <p style="margin: 0 0 8px 0; font-style: italic; font-size: 0.95rem;">„Sportmassagen sind sehr zu empfehlen. Auf eigene Bedürfnisse wird nicht nur passiv eingegangen, sondern aktiv gefragt. Termine unkompliziert vereinbar und zu 100% eingehalten. Bin und bleibe Wiederholungstäter“</p>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--subtext); text-align: right;">– K. R.</p>
+      </div>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <a class="secondary-btn" href="https://share.google/nzROIp1SwdZDZkXhr" target="_blank">
+          ⭐ Alle Google-Bewertungen ansehen
+        </a>
+      </div>
+    </section>
+
+    <!-- NEU: Gutscheine-Sektion direkt nach den Bewertungen -->
     <section id="gutscheine">
-      <h2>Gutscheine</h2>
-      <p>Schreib mir einfach per WhatsApp, E-Mail oder ruf mich an, welchen Gutschein du verschenken möchtest:</p>
+      <h2>Personalisierte Gutscheine</h2>
       
-      <ul class="voucher-list">
-        <li>
-          <span class="voucher-title">Sportmassage (60 Min.)</span>
-          <span class="voucher-price">59 €</span>
-        </li>
-        <li>
-          <span class="voucher-title">Rücken- & Nackenmassage (45 Min.)</span>
-          <span class="voucher-price">45 €</span>
-        </li>
-        <li>
-          <span class="voucher-title">Rücken- & Nackenmassage (30 Min.)</span>
-          <span class="voucher-price">35 €</span>
-        </li>
-        <li>
-          <span class="voucher-title">Wellnessmassage (60 Min.)</span>
-          <span class="voucher-price">55 €</span>
-        </li>
-      </ul>
+      <p style="font-weight: bold; color: var(--primary); margin-bottom: 5px;">Das perfekte Geschenk: Zeit zum Durchatmen.</p>
+      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 15px;">
+        Massage verschenken zu Weihnachten, zum Geburtstag, Valentinstag, Muttertag oder Vatertag. Eine gezielte Auszeit für jemanden, dem du etwas Gutes tun möchtest.
+      </p>
+      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 20px;">
+        Einfach Gutschein sichern und Entspannung schenken.
+      </p>
 
-      <p>Den personalisierten Gutschein erhältst du digital per E-Mail oder persönlich vor Ort in Unterhaching. Die Bezahlung erfolgt vorab per PayPal oder in bar.</p>
-      <p>Die Terminbuchung erfolgt anschließend direkt über die Website.</p>
+      <div style="background-color: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 20px; border: 1px solid #e0e0df;">
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Sportmassage (60 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">59 €</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Rücken- & Nackenmassage (45 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">45 €</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem;">
+          <span style="font-weight: 600; color: var(--primary);">Wellnessmassage (60 Min.)</span>
+          <span style="font-weight: 700; color: var(--primary);">55 €</span>
+        </div>
+      </div>
 
-      <div style="text-align: center; margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
-        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 10px;">
+        Den personalisierten Gutschein erhältst du digital per E-Mail oder direkt vor Ort in Unterhaching. Die Bezahlung erfolgt per PayPal oder in bar.
+      </p>
+      <p style="color: var(--subtext); font-size: 0.9rem; margin-bottom: 20px;">
+        Die Terminbuchung nimmt die beschenkte Person anschließend einfach selbst über die Website vor.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+        <a class="slot-btn" href="https://wa.me/4915560764392?text=Hallo,%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Gutschein." target="_blank" style="background-color: var(--accent);">
           🎁 Gutschein per WhatsApp anfragen
         </a>
-        <a class="secondary-btn" href="mailto:Massage@bodywork-unterhaching.de?subject=Gutschein-Anfrage&body=Hallo%20R%C3%BCdiger,%20ich%20m%C3%B6chte%20gerne%20einen%20Gutschein%20anfragen." target="_blank">
+        <a class="secondary-btn" href="mailto:info@bodywork-unterhaching.de?subject=Gutschein-Anfrage" style="width: 100%; max-width: 100%;">
           ✉️ Gutschein per E-Mail anfragen
         </a>
-        <a class="secondary-btn" href="tel:+4915560764392">
+        <a class="secondary-btn" href="tel:+4915560764392" style="width: 100%; max-width: 100%;">
           📞 Direkt anrufen (+49 155 60764392)
         </a>
       </div>
     </section>
 
-    <!-- ÜBER MICH -->
-    <section id="ueber-mich">
-      <h2>Über mich</h2>
-      <div class="profile-container">
-        <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" class="profile-img">
+    <section id="faq">
+      <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--subtext); margin-bottom: 5px;">Gut zu wissen</div>
+      <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Häufige Fragen</h2>
+      <div class="faq-container">
+        <details class="faq-item">
+          <summary class="faq-question">Was muss ich mitbringen?</summary>
+          <div class="faq-answer">Du musst nichts Spezielles mitbringen. Handtücher und alles Notwendige sind vor Ort vorhanden.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Muss man Sportler sein, um eine Sportmassage zu bekommen?</summary>
+          <div class="faq-answer">Nein. Die Sportmassage ist für alle da, die sich eine kräftige, tiefgehende Behandlung wünschen – egal ob im Alltag viel gesessen wird, körperlich gearbeitet oder Sport getrieben wird.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Wie kann ich bezahlen?</summary>
+          <div class="faq-answer">Du kannst vor Ort bequem in bar oder per PayPal bezahlen.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Gibt es medizinisch etwas zu beachten?</summary>
+          <div class="faq-answer">Ja, wenn du starke Schmerzen hast oder eine frische Operation, wende dich vorher an deinen behandelnden Arzt.</div>
+        </details>
       </div>
-      <p>Schön, dass du den Weg zu mir gefunden hast.</p>
-      <p>Ich bin Rüdiger von Bodywork Unterhaching.</p>
-      <p>Seit Beginn meiner beruflichen Laufbahn steht Dienstleistung für Menschen für mich an erster Stelle - ein Leitgedanke, den ich heute mit meiner Ausbildung zum Sportmasseur mit großer Freude und Leidenschaft lebe.</p>
-      <p>Ich arbeite klar, ruhig und auf Entlastung ausgerichtet. Jede Massage orientiert sich am aktuellen Zustand deines Körpers – nicht an starren Abläufen.</p>
-      <p>Mein Fokus liegt darauf, deine Verspannungen zu lösen und Raum für Regeneration zu schaffen – egal ob du viel sitzt, im Sport an deine Grenzen gehst oder dich dauerhaft gestresst fühlst.</p>
-      <p>Lust auf Zeit nur für dich und echte, tiefe Entspannung? Dann buche dir deine Auszeit – ich freue mich auf dich!</p>
-      <p style="font-size: 0.85rem; color: #718096; margin-top: 15px;">
-        <em>*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</em>
-      </p>
     </section>
 
-    <!-- RECHTLICHES -->
     <section id="rechtliches">
       <h2>Rechtliches</h2>
       <div class="legal-btn-group">
         <button class="legal-btn" onclick="toggleElement('imp-text')">Impressum anzeigen</button>
         <button class="legal-btn" onclick="toggleElement('ds-text')">Datenschutz anzeigen</button>
       </div>
-
       <div id="imp-text" class="legal-content">
         <h3>Impressum</h3>
-        <p><strong>Angaben gemäß § 5 TMG / Verantwortlich:</strong><br>
-        Bodywork Unterhaching<br>
-        Rüdiger Hammer<br>
-        Münchner Straße 7<br>
-        82008 Unterhaching</p>
-        
-        <p><strong>Kontakt:</strong><br>
-        Telefon: +49 155 60764392<br>
-        E-Mail: Massage@bodywork-unterhaching.de</p>
-
-        <p><strong>Steuernummer</strong><br>
-        147/173/90874 - Finanzamt München</p>
-
-        <p><strong>Umsatzsteuer</strong><br>
-        Es wird keine Umsatzsteuer erhoben, da es sich um eine Kleinunternehmertätigkeit gemäß § 19 UStG handelt.</p>
-
-        <p><strong>Rechtliches und Rahmenbedingungen</strong><br>
-        Mitglied der Berufsgenossenschaft für Gesundheitsdienst und Wohlfahrtspflege. (BGW)<br><br>
-        Es besteht eine Betriebshaftpflichtversicherung.</p>
+        <p>Bodywork Unterhaching<br>Rüdiger Hammer<br>Münchner Straße 7<br>82008 Unterhaching</p>
       </div>
-
       <div id="ds-text" class="legal-content">
         <h3>Datenschutzerklärung</h3>
-        <p><strong>Verantwortlicher</strong><br>
-        Bodywork Unterhaching<br>
-        Rüdiger Hammer<br>
-        Münchner Straße 7<br>
-        82008 Unterhaching<br>
-        E-Mail: Massage@bodywork-unterhaching.de<br>
-        Telefon: +49 155 60764392</p>
-
-        <p><strong>Geltungsbereich:</strong><br>
-        Diese Datenschutzerklärung gilt für die Nutzung unserer Website sowie für die Kontaktaufnahme und Terminvereinbarung.</p>
-
-        <p><strong>Hosting über GitHub Pages:</strong><br>
-        Diese Website wird über GitHub Pages gehostet (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA). Beim Aufruf der Website werden durch GitHub automatisch Daten erfasst und in sogenannten Server-Logfiles gespeichert.</p>
-
-        <p>Dazu gehören insbesondere:</p>
-        <ul>
-          <li>IP-Adresse</li>
-          <li>Datum und Uhrzeit der Anfrage</li>
-          <li>Browsertyp und Browserversion</li>
-          <li>verwendetes Betriebssystem</li>
-          <li>Referrer URL</li>
-        </ul>
-
-        <p>Diese Daten sind technisch erforderlich, um die Website bereitzustellen, die Systemsicherheit zu gewährleisten und die Stabilität zu sichern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einem sicheren und funktionierenden Betrieb der Website. Die Datenübermittlung in die USA erfolgt auf Grundlage von EU-Standardvertragsklauseln sowie dem Data Privacy Framework (DPF).</p>
-
-        <p><strong>Kommunikation über WhatsApp:</strong><br>
-        Für die Terminvereinbarung und Anfragen nutzen wir den Messenger-Dienst WhatsApp (WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland / Meta Platforms Inc.). Wenn Sie uns per WhatsApp kontaktieren, werden die von Ihnen übermittelten Daten (insbesondere Telefonnummer, Name und Chatnachrichten) verarbeitet.<br>
-        Rechtsgrundlage is Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung/Erfüllung) sowie unser berechtigtes Interesse an einer effizienten Kommunikation (Art. 6 Abs. 1 lit. f DSGVO). Es kann nicht ausgeschlossen werden, dass Daten an Muttergesellschaften von WhatsApp in den USA übertragen werden. Die Nutzung erfolgt freiwillig. Sie können die Kommunikation über WhatsApp jederzeit ablehnen oder die Löschung verlangen.</p>
-
-        <p><strong>Cookies:</strong><br>
-        Unsere Website verwendet ausschließlich technisch notwendige Funktionen zum Betrieb der Seite. Es werden keine Marketing- oder Analyse-Cookies eingesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
-
-        <p><strong>Dauer der Speicherung:</strong><br>
-        Personenbezogene Daten werden nur so lange gespeichert, wie dies zur Erfüllung der genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
-
-        <p><strong>Betroffenenrechte:</strong><br>
-        Sie haben folgende Rechte:</p>
-        <ul>
-          <li>Auskunft über Ihre gespeicherten Daten</li>
-          <li>Berichtigung unrichtiger Daten</li>
-          <li>Löschung Ihrer Daten</li>
-          <li>Einschränkung der Verarbeitung</li>
-          <li>Datenübertragbarkeit</li>
-          <li>Widerspruch gegen die Verarbeitung</li>
-          <li>Widerruf erteilter Einwilligungen</li>
-        </ul>
-
-        <p>Zur Ausübung Ihrer Rechte können Sie sich jederzeit an uns wenden:<br>
-        E-Mail: Massage@bodywork-unterhaching.de<br>
-        Telefon: +49 155 60764392</p>
-
-        <p><strong>Beschwerderecht:</strong><br>
-        Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.<br>
-        Zuständig ist: Bayerisches Landesamt für Datenschutzaufsicht<br>
-        Waldtruderingstraße 101, 81675 München<br>
-        Telefon: 089 21267 0, E-Mail: poststelle@bayern.de</p>
-
-        <p>© 2026 Bodywork Unterhaching</p>
+        <p>Hosting über GitHub Pages.</p>
       </div>
     </section>
 
@@ -588,182 +359,13 @@
   </footer>
 
   <script>
-    const sheetId = '1PxFGtlsxI66o-jp3bW7sLaUkjck8dXdtb7C_xTrTGlw';
-    const phone = '4915560764392';
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
-
-    const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-
-    function formatShortDate(dateObj) {
-      const d = String(dateObj.getDate()).padStart(2, '0');
-      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
-      return `${d}.${m}.`;
-    }
-
-    function getWeekRange(dateObj) {
-      const d = new Date(dateObj);
-      const day = d.getDay();
-      const diffToMonday = d.getDate() - day + (day === 0 ? -6 : 1);
-      
-      const monday = new Date(d.setDate(diffToMonday));
-      const saturday = new Date(monday);
-      saturday.setDate(monday.getDate() + 5);
-
-      return {
-        key: `${monday.getFullYear()}-${monday.getMonth()+1}-${monday.getDate()}`,
-        mondayObj: monday,
-        saturdayObj: saturday,
-        label: `Woche vom ${formatShortDate(monday)} bis ${formatShortDate(saturday)}`
-      };
-    }
-
-    async function loadSlots() {
-      let container = document.getElementById('dynamic-weeks-container');
-      if (!container) {
-        return;
-      }
-
-      try {
-        const response = await fetch(csvUrl);
-        const data = await response.text();
-        const rows = data.split('\n').slice(1);
-
-        const weeksMap = new Map();
-
-        rows.forEach(row => {
-          const cols = row.split(',').map(c => c.replace(/"/g, '').trim());
-          if (cols.length >= 4) {
-            const datumStr = cols[0];
-            const start = cols[1];
-            const ende = cols[2];
-            const status = cols[3].toLowerCase();
-
-            if (status === 'frei') {
-              const parts = datumStr.split('.');
-              if (parts.length === 3) {
-                const day = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10);
-                const year = parseInt(parts[2], 10);
-                const dateObj = new Date(year, month - 1, day);
-
-                const weekInfo = getWeekRange(dateObj);
-
-                if (!weeksMap.has(weekInfo.key)) {
-                  weeksMap.set(weekInfo.key, {
-                    info: weekInfo,
-                    daysMap: new Map()
-                  });
-                }
-
-                const weekEntry = weeksMap.get(weekInfo.key);
-                const dayKey = datumStr;
-
-                if (!weekEntry.daysMap.has(dayKey)) {
-                  const wochentag = days[dateObj.getDay()];
-                  weekEntry.daysMap.set(dayKey, {
-                    wochentag,
-                    datumKurz: `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.`,
-                    datumFull: datumStr,
-                    slots: []
-                  });
-                }
-
-                const waText = `Hallo Rüdiger, ich möchte gerne folgenden Termin für 60 Min. Sportmassage buchen:\nDatum: ${days[dateObj.getDay()]}, ${datumStr}\nUhrzeit: ${start} - ${ende} Uhr\nBitte sende mir eine kurze Bestätigung.`;
-                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
-
-                weekEntry.daysMap.get(dayKey).slots.push({
-                  start,
-                  ende,
-                  waUrl
-                });
-              }
-            }
-          }
-        });
-
-        container.innerHTML = '';
-
-        if (weeksMap.size === 0) {
-          container.innerHTML = '<div style="color: #666; font-size: 0.95rem;">Aktuell sind keine freien Termine verfügbar.</div>';
-          return;
-        }
-
-        const sortedWeeks = Array.from(weeksMap.values()).sort((a, b) => a.info.mondayObj - b.info.mondayObj);
-
-        sortedWeeks.forEach((week, index) => {
-          const weekId = `week-group-${index}`;
-          const isFirst = (index === 0);
-
-          const btn = document.createElement('button');
-          btn.className = isFirst ? 'week-toggle-btn active' : 'week-toggle-btn';
-          btn.innerHTML = `<span>${week.info.label}</span>`;
-          btn.onclick = () => toggleWeek(weekId, btn);
-
-          const slotGroup = document.createElement('div');
-          slotGroup.id = weekId;
-          slotGroup.className = 'slot-group';
-          if (isFirst) {
-            slotGroup.style.display = 'flex';
-          }
-
-          const sortedDays = Array.from(week.daysMap.values());
-
-          sortedDays.forEach(dayData => {
-            const dayBlock = document.createElement('div');
-            dayBlock.className = 'day-block';
-
-            const dayTitle = document.createElement('div');
-            dayTitle.className = 'day-title';
-            dayTitle.textContent = `${dayData.wochentag}, ${dayData.datumKurz}`;
-            dayBlock.appendChild(dayTitle);
-
-            const timeGrid = document.createElement('div');
-            timeGrid.className = 'time-grid';
-
-            dayData.slots.forEach(slot => {
-              const badge = document.createElement('a');
-              badge.href = slot.waUrl;
-              badge.target = '_blank';
-              badge.className = 'time-badge';
-              badge.textContent = `${slot.start} – ${slot.ende} Uhr`;
-              timeGrid.appendChild(badge);
-            });
-
-            dayBlock.appendChild(timeGrid);
-            slotGroup.appendChild(dayBlock);
-          });
-
-          container.appendChild(btn);
-          container.appendChild(slotGroup);
-        });
-
-      } catch (err) {
-        container.innerHTML = '<div style="color: #c53030; font-size: 0.95rem;">Fehler beim Laden der Termine.</div>';
-      }
-    }
-
-    function toggleWeek(id, btnElement) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      
-      const isHidden = window.getComputedStyle(el).display === 'none';
-      if (isHidden) {
-        el.style.display = 'flex';
-        btnElement.classList.add('active');
-      } else {
-        el.style.display = 'none';
-        btnElement.classList.remove('active');
-      }
-    }
-
     function toggleElement(id) {
       const el = document.getElementById(id);
-      if (!el) return;
-      const currentDisplay = window.getComputedStyle(el).display;
-      el.style.display = currentDisplay === 'none' ? 'block' : 'none';
+      if (el) { el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
     }
-
-    loadSlots();
   </script>
+  <script>
+  window.scrollTo(0, 0);
+</script>
 </body>
 </html>
