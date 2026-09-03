@@ -135,7 +135,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="top">
     <h1>Bodywork<br>Unterhaching</h1>
     <p class="subtitle">Sport- und Wellnessmassagen</p>
     
@@ -149,7 +149,7 @@
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
+    <a href="#top">Home</a>
     <a href="#angebot">**AKTION**</a>
     <a href="#bewertungen">Bewertungen</a>
     <a href="#gutscheine">Gutscheine</a>
@@ -439,7 +439,11 @@
     }
   </script>
   <script>
-   window.scrollTo({ top: 0, behavior: 'smooth' });
+    function toggleElement(id) {
+      const el = document.getElementById(id);
+      if (el) { el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
+    }
 </script>
-</body>
+  </body>
 </html>
+
