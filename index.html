@@ -51,13 +51,13 @@
     header {
       background-color: var(--bg); color: var(--primary); text-align: center; padding: 30px 20px 20px 20px; max-width: 750px; margin: 0 auto;
     }
-@media (min-width: 768px) {
-.gutschein-layout {
-flex-direction: row !important;
-align-items: center;
-gap: 30px !important;
-}
-}
+    @media (min-width: 768px) {
+      .gutschein-layout {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 30px !important;
+      }
+    }
     header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.5px; }
     header .subtitle { font-size: 1.2rem; margin-top: 10px; margin-bottom: 20px; font-weight: bold; color: var(--primary); }
     .header-hero-container {
@@ -218,24 +218,21 @@ gap: 30px !important;
 
     <div id="ueber-mich" style="margin-top: 35px; border-top: 2px solid var(--bg); padding-top: 25px; scroll-margin-top: 90px; text-align: center;">
   
-  <!-- Zentrierte Überschrift -->
   <h3 style="color: var(--primary); font-size: 1.3rem; margin-top: 0; margin-bottom: 20px;">Über mich</h3>
 
-  <!-- Zentriertes Profilbild -->
   <div style="margin: 20px 0;">
     <img src="profil.jpg" alt="Rüdiger Hammer - Bodywork Unterhaching" style="width: 240px; height: 240px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
   </div>
 
-  <!-- Der gesamte Text sauber darunter, linksbündig lesbar -->
- <div style="max-width: 550px; margin: 20px auto 0 auto; text-align: left; padding: 0 10px;">
-  <p style="font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary);">Schön, dass du hier bist.</p>
-  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
-  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
-  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
-  <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
-  
-  <p style="margin: 20px 0 0 0; font-size: 0.8rem; color: var(--subtext); font-style: italic; border-top: 1px solid var(--bg); padding-top: 10px;">*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</p>
-</div>
+  <div style="max-width: 550px; margin: 20px auto 0 auto; text-align: left; padding: 0 10px;">
+    <p style="font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; color: var(--primary);">Schön, dass du hier bist.</p>
+    <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ich bin Rüdiger und betreibe Bodywork Unterhaching als persönlichen Massage-Service in Unterhaching.</p>
+    <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Nach meiner Ausbildung zum Sportmasseur möchte ich Menschen dabei unterstützen, ihrem Körper bewusst Zeit und Aufmerksamkeit zu geben.</p>
+    <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Vor jeder Massage sprechen wir kurz darüber, was du dir von der Behandlung wünschst und worauf der Schwerpunkt liegen soll. Die Massage wird entsprechend angepasst – nicht nach einem starren Ablauf.</p>
+    <p style="color: var(--subtext); margin: 0 0 15px 0; line-height: 1.5;">Ob du viel Sport treibst, überwiegend am Schreibtisch sitzt oder einfach eine Stunde abschalten möchtest: Mir ist wichtig, dass du dich bei mir gut aufgehoben fühlst und genau weißt, was dich erwartet.</p>
+    
+    <p style="margin: 20px 0 0 0; font-size: 0.8rem; color: var(--subtext); font-style: italic; border-top: 1px solid var(--bg); padding-top: 10px;">*Meine Anwendungen dienen ausschließlich der Entspannung, Regeneration und Steigerung des allgemeinen Wohlbefindens. Es erfolgt keine medizinische Diagnose oder Behandlung.</p>
+  </div>
 
 </div>
 
@@ -273,20 +270,23 @@ gap: 30px !important;
       </div>
     </section>
 
-    <!-- NEU: Gutscheine-Sektion direkt nach den Bewertungen -->
     <section id="gutscheine">
       <h2>Personalisierte Gutscheine</h2>
-      <div style="margin: 15px 0 20px 0; max-width: 450px;">
-  <img src="gutschein.jpg" alt="Gutschein Bodywork Unterhaching" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: block;">
-</div>
       
-      <p style="font-weight: bold; color: var(--primary); margin-bottom: 5px;">Das perfekte Geschenk: Zeit zum Durchatmen.</p>
-      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 15px;">
-        Massage verschenken zu Weihnachten, zum Geburtstag, Valentinstag, Muttertag oder Vatertag. Eine gezielte Auszeit für jemanden, dem du etwas Gutes tun möchtest.
-      </p>
-      <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 20px;">
-        Einfach Gutschein sichern und Entspannung schenken.
-      </p>
+      <div class="gutschein-layout" style="display: flex; flex-direction: column; gap: 20px; margin: 15px 0 20px 0;">
+        <div style="width: 100%; max-width: 380px; flex-shrink: 0;">
+          <img src="gutschein.jpg" alt="Gutschein Bodywork Unterhaching" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: block;">
+        </div>
+        <div style="flex: 1;">
+          <p style="font-weight: bold; color: var(--primary); margin-top: 0; margin-bottom: 5px;">Das perfekte Geschenk: Zeit zum Durchatmen.</p>
+          <p style="color: var(--subtext); font-size: 0.95rem; margin-bottom: 12px; line-height: 1.5;">
+            Massage verschenken zu Weihnachten, zum Geburtstag, Valentinstag, Muttertag oder Vatertag. Eine gezielte Auszeit für jemanden, dem du etwas Gutes tun möchtest.
+          </p>
+          <p style="color: var(--subtext); font-size: 0.95rem; margin: 0; line-height: 1.5;">
+            Einfach Gutschein sichern und Entspannung schenken.
+          </p>
+        </div>
+      </div>
 
       <div style="background-color: var(--card-bg); border-radius: 10px; padding: 16px; margin-bottom: 20px; border: 1px solid #e0e0df;">
         <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; font-size: 0.95rem;">
@@ -448,6 +448,5 @@ gap: 30px !important;
       if (el) { el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
     }
   </script>
-  </body>
+</body>
 </html>
-
