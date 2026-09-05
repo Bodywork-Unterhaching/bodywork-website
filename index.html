@@ -148,9 +148,11 @@
       background-color: #2e4d46;
       min-width: 200px;
       box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
+      z-index: 1000;
       border-radius: 4px;
       text-align: left;
+      top: 100%;
+      left: 0;
     }
     .nav-kontakt-dropdown-content a {
       color: white;
@@ -171,7 +173,43 @@
         position: relative;
         box-shadow: none;
         width: 100%;
+        top: auto;
+        left: auto;
       }
+    }
+    
+    /* Ticker Styles */
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    .ticker-move {
+      display: inline-block;
+      animation: ticker 25s linear infinite;
+      padding-left: 100%;
+    }
+    .ticker-move:hover {
+      animation-play-state: paused;
+    }
+    .ticker-item {
+      display: inline-block;
+      padding: 0 2rem;
+    }
+    .ticker-item a {
+      color: white;
+      text-decoration: underline;
+    }
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
     }
   </style>
 </head>
@@ -199,18 +237,31 @@
     <a href="#faq">FAQ</a>
     <a href="#rechtliches">Rechtliches</a>
 
-    <!-- Hier den neuen KONTAKT-Punkt einfügen: -->
-  <div class="nav-kontakt-dropdown">
-    <a href="#" style="color: white; text-decoration: none; padding: 10px 15px; display: inline-block;">KONTAKT ▾</a>
-    <div class="nav-kontakt-dropdown-content">
-      <a href="https://wa.me/4915560764392">💬 WhatsApp / SMS</a>
-      <a href="mailto:massage@bodywork-unterhaching.de">✉️ E-Mail schreiben</a>
-      <a href="tel:+4915560764392">📞 Anrufen</a>
+    <div class="nav-kontakt-dropdown">
+      <a href="#" style="color: white; text-decoration: none; padding: 10px 15px; display: inline-block;">KONTAKT ▾</a>
+      <div class="nav-kontakt-dropdown-content">
+        <a href="https://wa.me/4915560764392">💬 WhatsApp / SMS</a>
+        <a href="mailto:massage@bodywork-unterhaching.de">✉️ E-Mail schreiben</a>
+        <a href="tel:+4915560764392">📞 Anrufen</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <div class="container">
+
+    <!-- Eingebauter Ticker-Fließtext -->
+    <div class="ticker-wrap">
+      <div class="ticker-move">
+        <div class="ticker-item">
+          📅 Termine nach vorheriger Absprache auch Sonn- und Feiertags möglich. 
+          📞 Anfrage per Anruf oder Nachricht an <a href="tel:+4915560764392">+49 155 60764392</a>
+        </div>
+        <div class="ticker-item">
+          📅 Termine nach vorheriger Absprache auch Sonn- und Feiertags möglich. 
+          📞 Anfrage per Anruf oder Nachricht an <a href="tel:+4915560764392">+49 155 60764392</a>
+        </div>
+      </div>
+    </div>
 
     <section id="angebot">
       <div class="section-header">
