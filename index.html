@@ -178,22 +178,23 @@
       }
     }
     
-    /* Ticker Styles */
+    /* Optimierte Ticker Styles (mobil-kompakt & interaktiv) */
     .ticker-wrap {
       width: 100%;
       overflow: hidden;
       background-color: var(--accent);
       color: white;
-      padding: 10px 0;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 7px 0;
+      font-size: 0.78rem;
+      font-weight: 500;
       white-space: nowrap;
       box-sizing: border-box;
       margin-bottom: 20px;
+      border-radius: 6px;
     }
     .ticker-move {
       display: inline-block;
-      animation: ticker 25s linear infinite;
+      animation: ticker 32s linear infinite;
       padding-left: 100%;
     }
     .ticker-move:hover {
@@ -201,11 +202,16 @@
     }
     .ticker-item {
       display: inline-block;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
     .ticker-item a {
-      color: white;
+      color: #ffffff;
       text-decoration: underline;
+      font-weight: 600;
+      margin: 0 2px;
+    }
+    .ticker-item a:hover {
+      color: #dcdad3;
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
@@ -249,16 +255,20 @@
 
   <div class="container">
 
-    <!-- Eingebauter Ticker-Fließtext -->
+    <!-- Angepasstes Ticker-Element (kompakter auf Mobilgeräten + WhatsApp, Anruf, E-Mail integriert) -->
     <div class="ticker-wrap">
       <div class="ticker-move">
         <div class="ticker-item">
-          📅 Termine nach vorheriger Absprache auch Sonn- und Feiertags möglich. 
-          📞 Anfrage per Anruf oder Nachricht an <a href="tel:+4915560764392">+49 155 60764392</a>
+          📅 Termine nach Vereinbarung (auch Sonn-/Feiertags) – 
+          <a href="https://wa.me/4915560764392">WhatsApp</a> | 
+          <a href="tel:+4915560764392">Anruf</a> | 
+          <a href="mailto:massage@bodywork-unterhaching.de">E-Mail</a>
         </div>
         <div class="ticker-item">
-          📅 Termine nach vorheriger Absprache auch Sonn- und Feiertags möglich. 
-          📞 Anfrage per Anruf oder Nachricht an <a href="tel:+4915560764392">+49 155 60764392</a>
+          📅 Termine nach Vereinbarung (auch Sonn-/Feiertags) – 
+          <a href="https://wa.me/4915560764392">WhatsApp</a> | 
+          <a href="tel:+4915560764392">Anruf</a> | 
+          <a href="mailto:massage@bodywork-unterhaching.de">E-Mail</a>
         </div>
       </div>
     </div>
